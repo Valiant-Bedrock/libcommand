@@ -18,7 +18,7 @@ use libcommand\parameter\Parameter;
 /**
  * @extends Parameter<string>
  */
-abstract class StringParameter extends Parameter {
+class StringParameter extends Parameter {
 
 	/**
 	 * @param string|array<string> $input

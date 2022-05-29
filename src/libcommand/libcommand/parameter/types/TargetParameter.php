@@ -20,7 +20,7 @@ use pocketmine\Server;
 /**
  * @extends Parameter<Player>
  */
-abstract class TargetParameter extends Parameter {
+class TargetParameter extends Parameter {
 
 	/**
 	 * @param string|array<string> $input
