@@ -34,7 +34,7 @@ class TargetParameter extends Parameter {
 	}
 
 	public function validate(array|string $input): bool {
-		return is_string($input);
+		return is_string($input) && Server::getInstance()->getPlayerExact($input) !== null;
 	}
 
 	public function getRequiredNumberOfArguments(): int {
