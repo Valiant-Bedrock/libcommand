@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace libcommand;
 
-use libcommand\parameter\Parameter;
+use  libcommand\parameter\Parameter;
 
 class Overload {
 

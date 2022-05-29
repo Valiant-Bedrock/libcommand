@@ -11,28 +11,29 @@
  */
 declare(strict_types=1);
 
-namespace libcommand\parameter\types;
+namespace  libcommand\parameter\types;
 
-use libcommand\parameter\Parameter;
-use pocketmine\player\Player;
-use pocketmine\Server;
+use  libcommand\parameter\Parameter;
+use function assert;
+use function intval;
+use function is_numeric;
 
 /**
- * @extends Parameter<Player>
+ * @extends Parameter<int>
  */
-class TargetParameter extends Parameter {
+class IntParameter extends Parameter {
 
 	/**
 	 * @param string|array<string> $input
-	 * @return Player|null
+	 * @return int
 	 */
-	public function parse(string|array $input): ?Player {
+	public function parse(string|array $input): int {
 		assert(is_string($input));
-		return Server::getInstance()->getPlayerExact($input);
+		return intval($input);
 	}
 
 	public function validate(array|string $input): bool {
-		return is_string($input);
+		return is_numeric($input);
 	}
 
 	public function getRequiredNumberOfArguments(): int {

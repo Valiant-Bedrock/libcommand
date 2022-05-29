@@ -16,6 +16,9 @@ namespace libcommand\parameter\types;
 use libcommand\parameter\Parameter;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
+use function count;
+use function intval;
+use function is_array;
 
 /**
  * @extends Parameter<Vector3>

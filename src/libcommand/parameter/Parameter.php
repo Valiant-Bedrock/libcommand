@@ -13,9 +13,6 @@ declare(strict_types=1);
 
 namespace libcommand\parameter;
 
-use pocketmine\command\utils\InvalidCommandSyntaxException;
-use pocketmine\player\Player;
-
 /**
  * @template T of mixed
  */

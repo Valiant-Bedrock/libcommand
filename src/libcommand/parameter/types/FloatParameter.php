@@ -11,22 +11,21 @@
  */
 declare(strict_types=1);
 
-namespace libcommand\parameter\types;
+namespace  libcommand\parameter\types;
 
-use libcommand\parameter\Parameter;
+use  libcommand\parameter\Parameter;
+use function assert;
+use function floatval;
+use function is_numeric;
 
 /**
- * @extends Parameter<int>
+ * @extends Parameter<float>
  */
-class IntParameter extends Parameter {
+class FloatParameter extends Parameter {
 
-	/**
-	 * @param string|array<string> $input
-	 * @return int
-	 */
-	public function parse(string|array $input): int {
+	public function parse(string|array $input): float {
 		assert(is_string($input));
-		return intval($input);
+		return floatval($input);
 	}
 
 	public function validate(array|string $input): bool {
