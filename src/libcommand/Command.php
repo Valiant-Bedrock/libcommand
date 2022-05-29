@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace libcommand;
 
 use pocketmine\command\CommandSender;
+use pocketmine\command\utils\InvalidCommandSyntaxException;
 
 abstract class Command extends \pocketmine\command\Command {
 
@@ -33,17 +34,22 @@ abstract class Command extends \pocketmine\command\Command {
 	public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
 		$overload = $this->matchArgsToOverload($args);
 		if($overload === null) {
-			return false;
+			throw new InvalidCommandSyntaxException();
 		}
-		return $this->onExecute($sender, $overload->map($args));
+		$value = $this->onExecute($sender, $overload->map($args));
+		if(is_string($value)) {
+			$sender->sendMessage($value);
+			return true;
+		}
+		return $value;
 	}
 
 	/**
 	 * @param CommandSender $sender
 	 * @param array<string, mixed> $arguments
-	 * @return bool
+	 * @return bool|string
 	 */
-	public abstract function onExecute(CommandSender $sender, array $arguments): bool;
+	public abstract function onExecute(CommandSender $sender, array $arguments): bool|string;
 
 	/**
 	 * @param array<string> $args
