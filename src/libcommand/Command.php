@@ -15,6 +15,8 @@ namespace libcommand;
 
 use pocketmine\command\CommandSender;
 use pocketmine\command\utils\InvalidCommandSyntaxException;
+use pocketmine\lang\KnownTranslationFactory;
+use pocketmine\utils\TextFormat;
 
 abstract class Command extends \pocketmine\command\Command {
 
@@ -36,7 +38,8 @@ abstract class Command extends \pocketmine\command\Command {
 		if(count($this->overloads) > 0) {
 			$overload = $this->matchArgsToOverload($args);
 			if($overload === null) {
-				throw new InvalidCommandSyntaxException();
+				$sender->sendMessage(TextFormat::RED . $sender->getLanguage()->translate(KnownTranslationFactory::commands_generic_usage($this->getUsage())));
+				return false;
 			}
 			$arguments = $overload->map($args);
 		}
