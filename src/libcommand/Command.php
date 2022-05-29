@@ -32,11 +32,16 @@ abstract class Command extends \pocketmine\command\Command {
 	 * @return bool
 	 */
 	public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
-		$overload = $this->matchArgsToOverload($args);
-		if($overload === null) {
-			throw new InvalidCommandSyntaxException();
+		$arguments = [];
+		if(count($this->overloads) > 0) {
+			$overload = $this->matchArgsToOverload($args);
+			if($overload === null) {
+				throw new InvalidCommandSyntaxException();
+			}
+			$arguments = $overload->map($args);
 		}
-		$value = $this->onExecute($sender, $overload->map($args));
+
+		$value = $this->onExecute($sender, $arguments);
 		if(is_string($value)) {
 			$sender->sendMessage($value);
 			return true;
