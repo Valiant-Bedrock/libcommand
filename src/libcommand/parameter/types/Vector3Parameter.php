@@ -21,24 +21,24 @@ use function intval;
 use function is_array;
 
 /**
+ * TODO: DO NOT USE YET! This parameter can not yet parse offsets.
+ *
  * @extends Parameter<Vector3>
  */
 class Vector3Parameter extends Parameter {
 
 	/**
 	 * @param string|array<string> $input
-	 * @return Vector3|null
+	 * @return Vector3
 	 */
-	public function parse(string|array $input): ?Vector3 {
-		if(!is_array($input) || count($input) !== 3) {
-			return null;
-		}
+	public function parse(string|array $input): Vector3 {
+		assert(is_array($input));
 		[$x, $y, $z] = $input;
-		return new Vector3(x: intval($x), y: intval($y), z: intval($z));
+		return new Vector3(x: floatval($x), y: floatval($y), z: floatval($z));
 	}
 
 	public function validate(array|string $input): bool {
-		return is_array($input);
+		return is_array($input) && count($input) === 3;
 	}
 
 	public function getRequiredNumberOfArguments(): int {
@@ -46,6 +46,6 @@ class Vector3Parameter extends Parameter {
 	}
 
 	public function getType(): int {
-		return AvailableCommandsPacket::ARG_TYPE_POSITION;
+		return AvailableCommandsPacket::ARG_TYPE_INT_POSITION;
 	}
 }
