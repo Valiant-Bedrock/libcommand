@@ -25,7 +25,7 @@ use pocketmine\Server;
 final class LibCommandBase {
 
 	/** @var array<Command> */
-	public static array $commands = [];
+	public static array $commands;
 
 	public static bool $registered = false;
 
