@@ -15,6 +15,7 @@ namespace libcommand\parameter\types;
 
 use libcommand\parameter\Parameter;
 use pocketmine\math\Vector3;
+use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\player\Player;
 use function count;
 use function intval;
@@ -24,10 +25,6 @@ use function is_array;
  * @extends Parameter<Vector3>
  */
 class CoordinatesParameter extends Parameter {
-
-	public function execute(Player $player, mixed $input): void {
-
-	}
 
 	/**
 	 * @param string|array<string> $input
@@ -47,5 +44,9 @@ class CoordinatesParameter extends Parameter {
 
 	public function getRequiredNumberOfArguments(): int {
 		return 3;
+	}
+
+	public function getType(): int {
+		return AvailableCommandsPacket::ARG_TYPE_POSITION;
 	}
 }

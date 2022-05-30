@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace  libcommand\parameter\types;
 
 use  libcommand\parameter\Parameter;
+use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use function assert;
 use function floatval;
 use function is_numeric;
@@ -34,5 +35,9 @@ class FloatParameter extends Parameter {
 
 	public function getRequiredNumberOfArguments(): int {
 		return 1;
+	}
+
+	public function getType(): int {
+		return AvailableCommandsPacket::ARG_TYPE_FLOAT;
 	}
 }

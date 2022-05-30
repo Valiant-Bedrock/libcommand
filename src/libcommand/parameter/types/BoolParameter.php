@@ -11,30 +11,34 @@
  */
 declare(strict_types=1);
 
-namespace  libcommand\parameter\types;
+namespace libcommand\parameter\types;
 
-use  libcommand\parameter\Parameter;
+use libcommand\parameter\Parameter;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
-use function assert;
-use function intval;
-use function is_numeric;
 
 /**
- * @extends Parameter<int>
+ * @extends Parameter<bool>
  */
-class IntParameter extends Parameter {
+class BoolParameter extends Parameter {
 
 	/**
-	 * @param string|array<string> $input
-	 * @return int
+	 * @param array<string>|string $input
+	 * @return bool
 	 */
-	public function parse(string|array $input): int {
-		assert(is_string($input));
-		return intval($input);
+	public function parse(array|string $input): bool {
+		return boolval($input);
 	}
 
+	/**
+	 * @param array<string>|string $input
+	 * @return bool
+	 */
 	public function validate(array|string $input): bool {
-		return is_numeric($input);
+		assert(is_string($input));
+		return match(strtolower($input)) {
+			"true", "1", "false", "0" => true,
+			default => false
+		};
 	}
 
 	public function getRequiredNumberOfArguments(): int {
@@ -42,6 +46,6 @@ class IntParameter extends Parameter {
 	}
 
 	public function getType(): int {
-		return AvailableCommandsPacket::ARG_TYPE_INT;
+		return AvailableCommandsPacket::ARG_TYPE_RAWTEXT;
 	}
 }

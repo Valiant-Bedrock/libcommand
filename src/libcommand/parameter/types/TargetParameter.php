@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace  libcommand\parameter\types;
 
 use  libcommand\parameter\Parameter;
+use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use function assert;
@@ -39,5 +40,9 @@ class TargetParameter extends Parameter {
 
 	public function getRequiredNumberOfArguments(): int {
 		return 1;
+	}
+
+	public function getType(): int {
+		return AvailableCommandsPacket::ARG_TYPE_TARGET;
 	}
 }

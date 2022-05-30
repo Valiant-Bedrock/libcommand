@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace libcommand\parameter;
 
+use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+
 /**
  * @template T of mixed
  */
@@ -50,5 +52,12 @@ abstract class Parameter {
 	 * @return int
 	 */
 	public abstract function getRequiredNumberOfArguments(): int;
+
+	/**
+	 * Returns the parameter type from {@link AvailableCommandsPacket}
+	 *
+	 * @return int
+	 */
+	public abstract function getType(): int;
 
 }

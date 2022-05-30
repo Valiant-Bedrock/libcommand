@@ -14,18 +14,39 @@ declare(strict_types=1);
 namespace libcommand;
 
 use pocketmine\command\CommandSender;
-use pocketmine\command\utils\InvalidCommandSyntaxException;
 use pocketmine\lang\KnownTranslationFactory;
+use pocketmine\lang\Translatable;
 use pocketmine\utils\TextFormat;
 
 abstract class Command extends \pocketmine\command\Command {
 
-	/** @var array<Overload> */
-	protected array $overloads = [];
+	/**
+	 * @param string $name
+	 * @param Translatable|string $description
+	 * @param Translatable|string|null $usageMessage
+	 * @param array<string> $aliases
+	 * @param array<Overload> $overloads
+	 */
+	public function __construct(string $name, Translatable|string $description = "", Translatable|string|null $usageMessage = null, array $aliases = [], protected array $overloads = []) {
+		parent::__construct($name, $description, $usageMessage, $aliases);
+	}
 
 	public function registerOverload(Overload $overload): void {
 		$this->overloads[$overload->getName()] = $overload;
- 	}
+	}
+
+	public function registerOverloads(Overload ...$overloads): void {
+		foreach ($overloads as $overload) {
+			$this->registerOverload($overload);
+		}
+	}
+
+	/**
+	 * @return array<Overload>
+	 */
+	public function getOverloads(): array {
+		return $this->overloads;
+	}
 
 	/**
 	 * @param CommandSender $sender

@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace  libcommand\parameter\types;
 
 use  libcommand\parameter\Parameter;
+use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use function assert;
 
 /**
@@ -40,5 +41,9 @@ class StringParameter extends Parameter {
 	 */
 	public function validate(array|string $input): bool {
 		return true;
+	}
+
+	public function getType(): int {
+		return AvailableCommandsPacket::ARG_TYPE_RAWTEXT;
 	}
 }
