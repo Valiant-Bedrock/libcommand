@@ -13,7 +13,8 @@ declare(strict_types=1);
 
 namespace libcommand;
 
-use  libcommand\parameter\Parameter;
+use InvalidArgumentException;
+use libcommand\parameter\Parameter;
 
 class Overload {
 
@@ -22,6 +23,13 @@ class Overload {
 	 * @param array<Parameter<mixed>> $parameters
 	 */
 	public function __construct(protected string $name, protected array $parameters) {
+		$last = null;
+		foreach($this->parameters as $parameter) {
+			if($last !== null && $last->isOptional() && !$parameter->isOptional()) {
+				throw new InvalidArgumentException("Optional parameters must be last");
+			}
+			$last = $parameter;
+		}
 	}
 
 	public function getName(): string {
@@ -55,7 +63,7 @@ class Overload {
 			}
 
 			/** @var string|array<string> $input */
-			$input = count($values) === 1? $values[0] : $values;
+			$input = count($values) === 1 ? $values[0] : $values;
 			if(!$parameter->validate($input)) {
 				return false;
 			}
