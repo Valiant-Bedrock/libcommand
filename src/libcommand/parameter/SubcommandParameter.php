@@ -20,11 +20,15 @@ use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 
 class SubcommandParameter extends RawTextParameter {
 
+	public function __construct(string $name) {
+		parent::__construct($name);
+	}
+
 	public function encode(): CommandParameter {
 		$parameter = CommandParameter::standard(
 			name: $this->name,
 			type: AvailableCommandsPacket::ARG_FLAG_ENUM | AvailableCommandsPacket::ARG_TYPE_RAWTEXT,
-			optional: $this->optional
+			optional: false
 		);
 		$parameter->enum = new CommandEnum(enumName: "{$this->name}_values", enumValues: [$this->name]);
 		return $parameter;
