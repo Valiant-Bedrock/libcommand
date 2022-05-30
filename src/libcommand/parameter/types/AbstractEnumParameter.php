@@ -16,21 +16,20 @@ namespace libcommand\parameter\types;
 use libcommand\parameter\Parameter;
 use pocketmine\network\mcpe\protocol\types\command\CommandEnum;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
-use function assert;
 use function in_array;
 use function is_string;
 
 /**
  * @template TValue of mixed
  *
- * @extends Parameter<string>
+ * @extends Parameter<TValue>
  */
-class EnumParameter extends Parameter {
+abstract class AbstractEnumParameter extends Parameter {
 
 	/**
 	 * @param string $name
 	 * @param string $enumName
-	 * @param array<string> $enumValues
+	 * @param array<TValue> $enumValues
 	 * @param bool $optional
 	 */
 	public function __construct(string $name, protected string $enumName, protected array $enumValues, bool $optional = false) {
@@ -39,12 +38,9 @@ class EnumParameter extends Parameter {
 
 	/**
 	 * @param array<string>|string $input
-	 * @return string
+	 * @return TValue
 	 */
-	public function parse(array|string $input): string {
-		assert(is_string($input));
-		return $input;
-	}
+	public abstract function parse(array|string $input): mixed;
 
 	/**
 	 * @param array<string>|string $input
@@ -65,7 +61,7 @@ class EnumParameter extends Parameter {
 	public function encode(): CommandParameter {
 		return CommandParameter::enum(
 			name: $this->name,
-			enum: new CommandEnum(enumName: $this->enumName, enumValues: $this->enumValues),
+			enum: new CommandEnum(enumName: $this->enumName, enumValues: array_map(fn(mixed $value): string => (string) $value, $this->enumValues)),
 			flags: 0,
 			optional: $this->optional
 		);
