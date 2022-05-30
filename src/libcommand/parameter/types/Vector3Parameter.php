@@ -16,7 +16,6 @@ namespace libcommand\parameter\types;
 use libcommand\parameter\Parameter;
 use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
-use pocketmine\player\Player;
 use function count;
 use function intval;
 use function is_array;
@@ -24,7 +23,7 @@ use function is_array;
 /**
  * @extends Parameter<Vector3>
  */
-class CoordinatesParameter extends Parameter {
+class Vector3Parameter extends Parameter {
 
 	/**
 	 * @param string|array<string> $input
