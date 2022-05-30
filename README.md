@@ -61,6 +61,11 @@ $overload = new \libcommand\Overload(
 Finally, to tie these features together, it uses the `Command` class. This class is meant to be extended to create new commands. The class extends `\pocketmine\command\Command` and accepts
 one more parameter, `$overloads`, which is an array of `Overload` objects, though you can use the methods `addOverload(Overload $overload): void` and `addOverloads(Overload ...$overloads)` to add them separately from the constructor.
 
+#### `onExecute(CommandSender $sender, array<Parameter> $arguments): bool|string`
+This method is the heart of the command and runs the actual logic of the command. The command will look for a compatible overload and then pass it to `$arguments`. With `$arguments`, you can
+access the parameter values through their name (e.g., `new StringParameter("name")` would be accessed through `$arguments["name"]`). If the return type from this method is `string`, the returned value will be sent to the command sender.
+
+#### Command Sender Access
 To limit the access to the command, you can use the `ConsoleCommand` class or `PlayerCommand` class. This will verify the command sender before executing the command.
 
 ## Simple Example
