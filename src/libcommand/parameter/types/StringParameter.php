@@ -17,7 +17,7 @@ use libcommand\parameter\Parameter;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 
 /**
- * TODO: The current system does not allow for unlimited argument counts (which is a sort of basis for this parameter type)
+ * TODO: DO NOT USE YET! The current system does not allow for unlimited argument counts (which is a sort of basis for this parameter type)
  *
  * @extends Parameter<string>
  */
