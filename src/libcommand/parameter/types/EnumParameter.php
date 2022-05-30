@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace libcommand\parameter\types;
 
 use libcommand\parameter\Parameter;
-use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\network\mcpe\protocol\types\command\CommandEnum;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 use function assert;
@@ -24,7 +23,7 @@ use function is_string;
 /**
  * @template TValue of mixed
  *
- * @template-extends Parameter<string>
+ * @extends Parameter<string>
  */
 class EnumParameter extends Parameter {
 
@@ -60,7 +59,7 @@ class EnumParameter extends Parameter {
 	}
 
 	public function getType(): int {
-		return AvailableCommandsPacket::ARG_FLAG_ENUM;
+		return -1;
 	}
 
 	public function encode(): CommandParameter {
