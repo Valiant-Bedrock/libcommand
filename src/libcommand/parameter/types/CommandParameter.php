@@ -25,13 +25,6 @@ use function is_string;
  */
 class CommandParameter extends Parameter {
 
-	/**
-	 * @param string $name
-	 */
-	public function __construct(string $name) {
-		parent::__construct($name, false);
-	}
-
 	public function parse(array|string $input): Command {
 		assert(is_string($input));
 		return Server::getInstance()->getCommandMap()->getCommand($input) ?? throw new AssumptionFailedError("Command '$input' not found");
