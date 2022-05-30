@@ -11,9 +11,8 @@
  */
 declare(strict_types=1);
 
-namespace libcommand\parameter;
+namespace libcommand\parameter\types;
 
-use libcommand\parameter\types\RawTextParameter;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\network\mcpe\protocol\types\command\CommandEnum;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
