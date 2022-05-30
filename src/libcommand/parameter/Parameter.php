@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace libcommand\parameter;
 
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 
 /**
  * @template T of mixed
@@ -60,4 +61,14 @@ abstract class Parameter {
 	 */
 	public abstract function getType(): int;
 
+	/**
+	 * @return CommandParameter
+	 */
+	public function encode(): CommandParameter {
+		return CommandParameter::standard(
+			name: $this->name,
+			type: $this->getType(),
+			optional: $this->optional
+		);
+	}
 }

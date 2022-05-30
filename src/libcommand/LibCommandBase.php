@@ -62,11 +62,7 @@ final class LibCommandBase {
 	private static function mapOverloadsToPacket(Command $command): array {
 		return array_map(
 			callback: fn(Overload $overload) => array_map(
-				callback: fn(Parameter $parameter) => CommandParameter::standard(
-					name: $parameter->getName(),
-					type: $parameter->getType(),
-					optional: $parameter->isOptional(),
-				),
+				callback: fn(Parameter $parameter) => $parameter->encode(),
 				array: $overload->getParameters()
 			),
 			array: $command->getOverloads()
