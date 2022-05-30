@@ -22,19 +22,24 @@ use pocketmine\block\VanillaBlocks;
  */
 class BlockEnumParameter extends AbstractEnumParameter {
 
-	public function __construct(bool $optional = false) {
-		parent::__construct("tileName", "Block", [], $optional);
+	public function __construct(string $name, bool $optional = false) {
+		parent::__construct($name, "Block", [], $optional);
 	}
 
 	public function parse(array|string $input): Block {
 		assert(is_string($input));
-		$block = VanillaBlocks::getAll()[strtoupper($input)];
+		$block = $this->parseFromString($input);
 		assert($block instanceof Block);
 		return $block;
 	}
 
 	public function validate(array|string $input): bool {
 		assert(is_string($input));
-		return VanillaBlocks::getAll()[strtoupper($input)] !== null;
+		return $this->parseFromString($input) !== null;
+	}
+
+	public function parseFromString(string $input): ?Block {
+		$blocks = VanillaBlocks::getAll();
+		return $blocks[strtoupper($input)] ?? null;
 	}
 }
