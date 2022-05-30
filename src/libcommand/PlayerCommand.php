@@ -15,12 +15,13 @@ namespace libcommand;
 
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
 
 abstract class PlayerCommand extends Command {
 
 	public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
 		if(!$sender instanceof Player) {
-			$sender->sendMessage("This command can only be used in-game.");
+			$sender->sendMessage(TextFormat::RED . "This command can only be used in-game.");
 			return false;
 		}
 		return parent::execute($sender, $commandLabel, $args);
