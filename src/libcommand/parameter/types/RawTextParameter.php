@@ -11,32 +11,39 @@
  */
 declare(strict_types=1);
 
-namespace libcommand\parameter\types;
+namespace  libcommand\parameter\types;
 
-use libcommand\parameter\Parameter;
+use  libcommand\parameter\Parameter;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+use function assert;
 
 /**
- * TODO: The current system does not allow for unlimited argument counts (which is a sort of basis for this parameter type)
- *
  * @extends Parameter<string>
  */
-class StringParameter extends Parameter {
+class RawTextParameter extends Parameter {
 
-	public function parse(array|string $input): string {
+	/**
+	 * @param string|array<string> $input
+	 * @return string
+	 */
+	public function parse(string|array $input): string {
 		assert(is_string($input));
 		return $input;
-	}
-
-	public function validate(array|string $input): bool {
-		return is_string($input);
 	}
 
 	public function getRequiredNumberOfArguments(): int {
 		return 1;
 	}
 
+	/**
+	 * @param array<string>|string $input
+	 * @return bool
+	 */
+	public function validate(array|string $input): bool {
+		return is_string($input);
+	}
+
 	public function getType(): int {
-		return AvailableCommandsPacket::ARG_TYPE_STRING;
+		return AvailableCommandsPacket::ARG_TYPE_RAWTEXT;
 	}
 }

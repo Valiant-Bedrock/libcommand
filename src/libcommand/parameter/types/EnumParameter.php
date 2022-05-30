@@ -11,18 +11,22 @@
  */
 declare(strict_types=1);
 
-namespace libcommand\parameter;
+namespace libcommand\parameter\types;
 
+use libcommand\parameter\Parameter;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\network\mcpe\protocol\types\command\CommandEnum;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
+use function assert;
+use function in_array;
+use function is_string;
 
 /**
  * @template TValue of mixed
  *
  * @template-extends Parameter<string>
  */
-class Enum extends Parameter {
+class EnumParameter extends Parameter {
 
 	/**
 	 * @param string $name

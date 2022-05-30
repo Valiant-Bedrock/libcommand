@@ -13,30 +13,17 @@ declare(strict_types=1);
 
 namespace libcommand\parameter\types;
 
-use libcommand\parameter\Parameter;
+use pocketmine\inventory\ArmorInventory;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 
-/**
- * TODO: The current system does not allow for unlimited argument counts (which is a sort of basis for this parameter type)
- *
- * @extends Parameter<string>
- */
-class StringParameter extends Parameter {
-
-	public function parse(array|string $input): string {
-		assert(is_string($input));
-		return $input;
-	}
+class EquipmentSlotParameter extends IntParameter {
 
 	public function validate(array|string $input): bool {
-		return is_string($input);
-	}
-
-	public function getRequiredNumberOfArguments(): int {
-		return 1;
+		return parent::validate($input) && $input >= ArmorInventory::SLOT_HEAD && $input <= ArmorInventory::SLOT_FEET;
 	}
 
 	public function getType(): int {
-		return AvailableCommandsPacket::ARG_TYPE_STRING;
+		return AvailableCommandsPacket::ARG_TYPE_EQUIPMENT_SLOT;
 	}
+
 }

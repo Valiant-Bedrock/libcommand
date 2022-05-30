@@ -14,13 +14,16 @@ declare(strict_types=1);
 namespace libcommand\parameter\types;
 
 use libcommand\parameter\Parameter;
+use pocketmine\command\Command;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+use pocketmine\Server;
+use pocketmine\utils\AssumptionFailedError;
 use function is_string;
 
 /**
- * @extends Parameter<string>
+ * @extends Parameter<Command>
  */
-class SubcommandParameter extends Parameter {
+class CommandParameter extends Parameter {
 
 	/**
 	 * @param string $name
@@ -29,12 +32,13 @@ class SubcommandParameter extends Parameter {
 		parent::__construct($name, false);
 	}
 
-	public function parse(array|string $input): string {
-		return $this->name;
+	public function parse(array|string $input): Command {
+		assert(is_string($input));
+		return Server::getInstance()->getCommandMap()->getCommand($input) ?? throw new AssumptionFailedError("Command '$input' not found");
 	}
 
 	public function validate(array|string $input): bool {
-		return is_string($input) && $this->name === $input;
+		return is_string($input) && Server::getInstance()->getCommandMap()->getCommand($input) !== null;
 	}
 
 	public function getRequiredNumberOfArguments(): int {
