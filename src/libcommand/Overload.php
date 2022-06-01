@@ -15,6 +15,7 @@ namespace libcommand;
 
 use InvalidArgumentException;
 use libcommand\parameter\Parameter;
+use libcommand\parameter\types\RawTextParameter;
 
 class Overload {
 
@@ -27,6 +28,8 @@ class Overload {
 		foreach($this->parameters as $parameter) {
 			if($last !== null && $last->isOptional() && !$parameter->isOptional()) {
 				throw new InvalidArgumentException("Optional parameters must be last");
+			} elseif($last instanceof RawTextParameter) {
+				throw new InvalidArgumentException("Raw text parameters must be last");
 			}
 			$last = $parameter;
 		}
