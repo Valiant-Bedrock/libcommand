@@ -15,7 +15,7 @@ namespace libcommand\parameter\types;
 
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 
-class JsonParameter extends RawTextParameter {
+class JsonParameter extends StringParameter {
 
 	public function getType(): int {
 		return AvailableCommandsPacket::ARG_TYPE_JSON;

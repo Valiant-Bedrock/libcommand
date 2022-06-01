@@ -17,7 +17,7 @@ use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\network\mcpe\protocol\types\command\CommandEnum;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 
-class SubcommandParameter extends RawTextParameter {
+class SubcommandParameter extends StringParameter {
 
 	public function __construct(string $name) {
 		parent::__construct($name);

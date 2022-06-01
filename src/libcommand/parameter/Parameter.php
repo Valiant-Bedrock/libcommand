@@ -35,7 +35,7 @@ abstract class Parameter {
 	 * Parses the input into a usable format
 	 *
 	 * @param string|array<string> $input
-	 * @return T
+	 * @return mixed
 	 */
 	public abstract function parse(string|array $input): mixed;
 

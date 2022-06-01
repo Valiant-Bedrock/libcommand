@@ -15,7 +15,7 @@ namespace libcommand\parameter\types;
 
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 
-class OperatorParameter extends RawTextParameter {
+class OperatorParameter extends StringParameter {
 
 	public function validate(array|string $input): bool {
 		return is_string($input) && match(strtolower($input)) {

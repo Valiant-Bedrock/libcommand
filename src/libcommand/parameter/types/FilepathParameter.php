@@ -15,7 +15,7 @@ namespace libcommand\parameter\types;
 
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 
-class FilepathParameter extends RawTextParameter {
+class FilepathParameter extends StringParameter {
 
 	public function getType(): int {
 		return AvailableCommandsPacket::ARG_TYPE_FILEPATH;

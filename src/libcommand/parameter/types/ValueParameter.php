@@ -13,10 +13,9 @@ declare(strict_types=1);
 
 namespace libcommand\parameter\types;
 
-use libcommand\parameter\Parameter;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 
-class ValueParameter extends RawTextParameter {
+class ValueParameter extends StringParameter {
 
 	public function getType(): int {
 		return AvailableCommandsPacket::ARG_TYPE_VALUE;
