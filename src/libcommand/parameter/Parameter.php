@@ -17,7 +17,7 @@ use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 
 /**
- * @template T of mixed
+ * @template T as mixed
  */
 abstract class Parameter {
 
