@@ -23,6 +23,10 @@ class SubcommandParameter extends RawTextParameter {
 		parent::__construct($name);
 	}
 
+	public function validate(array|string $input): bool {
+		return is_string($input) && $input === $this->name;
+	}
+
 	public function encode(): CommandParameter {
 		$parameter = CommandParameter::standard(
 			name: $this->name,
