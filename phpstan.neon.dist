@@ -4,3 +4,5 @@ parameters:
         - src
     bootstrapFiles:
         - vendor/autoload.php
+    excludePaths:
+        - src/libcommand/VanillaCommands.php
