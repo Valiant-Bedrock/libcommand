@@ -212,7 +212,9 @@ final class VanillaCommands {
 			new Overload("default", [new TargetParameter("player", true)])
 		]);
 		self::register("list", []);
-		self::register("me", [new RawTextParameter("action")]);
+		self::register("me", [
+			new Overload("default", [new RawTextParameter("action")])
+		]);
 		self::register("op", [
 			new Overload("player", [new TargetParameter("player")]),
 			new Overload("name", [new StringParameter("name")])
