@@ -23,7 +23,7 @@ use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
  */
 class BoolParameter extends Parameter {
 
-	protected const ENUM_NAME = "value";
+	protected const ENUM_NAME = "Boolean";
 	protected const ACCEPTED_VALUES = ["true" => true, "1" => true, "false" => false, "0" => false];
 
 	public function parse(CommandSender $sender, array &$input): bool {
