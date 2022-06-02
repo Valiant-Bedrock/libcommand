@@ -159,13 +159,14 @@ final class VanillaCommands {
 				),
 				new IntParameter("seconds", true),
 				new IntParameter("amplifier", true),
-				new BoolParameter("hideParticles")
+				new BoolParameter("hideParticles", true)
 			]),
 			new Overload("add_int", [
-				new TargetParameter("player", true),
-				new IntParameter("effect", false),
+				new TargetParameter("player"),
+				new IntParameter("effect"),
+				new IntParameter("seconds", true),
 				new IntParameter("amplifier", true),
-				new BoolParameter("hideParticles")
+				new BoolParameter("hideParticles", true)
 			]),
 			new Overload("clear", [
 				new TargetParameter("player"),
@@ -180,7 +181,7 @@ final class VanillaCommands {
 			]),
 			new Overload("int", [
 				new TargetParameter("player"),
-				new IntParameter("enchantmentId", false),
+				new IntParameter("enchantmentId"),
 				new IntParameter("level", true)
 			])
 		]);
