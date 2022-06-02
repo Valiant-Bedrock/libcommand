@@ -390,7 +390,7 @@ final class VanillaCommands {
 
 	public static function fromString(string $name): ?VanillaCommands {
 		/** @var VanillaCommands|null $value */
-		$value = self::_registryFromString($name);
+		$value = self::_registryFromString(str_replace("-", "_", $name));
 		return $value;
 	}
 }
