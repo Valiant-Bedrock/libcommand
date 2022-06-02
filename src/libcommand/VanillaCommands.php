@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace libcommand;
 
+use InvalidArgumentException;
 use libcommand\parameter\Parameter;
 use libcommand\parameter\types\BoolParameter;
 use libcommand\parameter\types\enums\EnumParameter;
@@ -391,8 +392,12 @@ final class VanillaCommands {
 	}
 
 	public static function fromString(string $name): ?VanillaCommands {
-		/** @var VanillaCommands|null $value */
-		$value = self::_registryFromString(str_replace("-", "_", $name));
-		return $value;
+		try {
+			/** @var VanillaCommands|null $value */
+			$value = self::_registryFromString(str_replace("-", "_", $name));
+			return $value;
+		} catch(InvalidArgumentException $exception) {
+			return null;
+		}
 	}
 }
