@@ -13,9 +13,15 @@ declare(strict_types=1);
 
 namespace libcommand\parameter\types;
 
+use libcommand\parameter\Parameter;
+use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+use pocketmine\utils\AssumptionFailedError;
 
-class EquipmentSlotParameter extends StringParameter {
+/**
+ * @extends Parameter<string>
+ */
+class EquipmentSlotParameter extends Parameter {
 
 	public const ACCEPTED_VALUES = [
 		"slot.armor" => true,
@@ -33,12 +39,26 @@ class EquipmentSlotParameter extends StringParameter {
 		"slot.weapon.offhand" => true,
 	];
 
-	public function validate(array|string $input): bool {
-		return is_string($input) && isset(self::ACCEPTED_VALUES[$input]);
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return string
+	 */
+	public function parse(CommandSender $sender, array &$input): string {
+		return array_shift($input) ?? throw new AssumptionFailedError("Expected a value");
+	}
+
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return bool
+	 */
+	public function validate(CommandSender $sender, array &$input): bool {
+		$value = array_shift($input);
+		return is_string($value) && isset(self::ACCEPTED_VALUES[strtolower($value)]);
 	}
 
 	public function getType(): int {
 		return AvailableCommandsPacket::ARG_TYPE_EQUIPMENT_SLOT;
 	}
-
 }

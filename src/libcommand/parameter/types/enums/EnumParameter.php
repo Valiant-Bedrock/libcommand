@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace libcommand\parameter\types\enums;
 
 use libcommand\parameter\types\AbstractEnumParameter;
+use pocketmine\command\CommandSender;
+use pocketmine\utils\AssumptionFailedError;
 
 
 /**
@@ -21,8 +23,22 @@ use libcommand\parameter\types\AbstractEnumParameter;
  */
 class EnumParameter extends AbstractEnumParameter {
 
-	public function parse(array|string $input): string {
-		assert(is_string($input));
-		return $input;
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return string
+	 */
+	public function parse(CommandSender $sender, array &$input): string {
+		return array_shift($input) ?? throw new AssumptionFailedError("Value expected");
+	}
+
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return bool
+	 */
+	public function validate(CommandSender $sender, array &$input): bool {
+		$value = array_shift($input);
+		return is_string($value) && in_array($value, $this->enumValues, true);
 	}
 }

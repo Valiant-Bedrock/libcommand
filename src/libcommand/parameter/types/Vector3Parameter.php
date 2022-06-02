@@ -14,11 +14,10 @@ declare(strict_types=1);
 namespace libcommand\parameter\types;
 
 use libcommand\parameter\Parameter;
+use pocketmine\command\CommandSender;
 use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use function count;
-use function intval;
-use function is_array;
 
 /**
  * TODO: DO NOT USE YET! This parameter can not yet parse offsets.
@@ -28,21 +27,17 @@ use function is_array;
 class Vector3Parameter extends Parameter {
 
 	/**
-	 * @param string|array<string> $input
+	 * @param CommandSender $sender
+	 * @param array<string> $input
 	 * @return Vector3
 	 */
-	public function parse(string|array $input): Vector3 {
-		assert(is_array($input));
-		[$x, $y, $z] = $input;
+	public function parse(CommandSender $sender, array &$input): Vector3 {
+		[$x, $y, $z] = array_splice($input, 0, 3);
 		return new Vector3(x: floatval($x), y: floatval($y), z: floatval($z));
 	}
 
-	public function validate(array|string $input): bool {
-		return is_array($input) && count($input) === 3;
-	}
-
-	public function getRequiredNumberOfArguments(): int {
-		return 3;
+	public function validate(CommandSender $sender, array &$input): bool {
+		return count(array_splice($input, 0, 3)) === 3;
 	}
 
 	public function getType(): int {

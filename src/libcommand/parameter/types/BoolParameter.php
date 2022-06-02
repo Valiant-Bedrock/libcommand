@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace libcommand\parameter\types;
 
 use libcommand\parameter\Parameter;
+use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\types\command\CommandEnum;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 
@@ -23,26 +24,22 @@ use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 class BoolParameter extends Parameter {
 
 	protected const ENUM_NAME = "value";
-	protected const ACCEPTED_VALUES = ["true" => true, "1" => true, "false" => true, "0" => true];
+	protected const ACCEPTED_VALUES = ["true" => true, "1" => true, "false" => false, "0" => false];
 
-	/**
-	 * @param array<string>|string $input
-	 * @return bool
-	 */
-	public function parse(array|string $input): bool {
-		return boolval($input);
+	public function parse(CommandSender $sender, array &$input): bool {
+		/** @var string $name */
+		$name = array_shift($input);
+		return self::ACCEPTED_VALUES[$name] ?? false;
 	}
 
 	/**
-	 * @param array<string>|string $input
+	 * @param CommandSender $sender
+	 * @param array<string> $input
 	 * @return bool
 	 */
-	public function validate(array|string $input): bool {
-		return is_string($input) && isset(self::ACCEPTED_VALUES[strtolower($input)]);
-	}
-
-	public function getRequiredNumberOfArguments(): int {
-		return 1;
+	public function validate(CommandSender $sender, array &$input): bool {
+		$name = array_shift($input);
+		return is_string($name) && isset(self::ACCEPTED_VALUES[strtolower($name)]);
 	}
 
 	public function getType(): int {

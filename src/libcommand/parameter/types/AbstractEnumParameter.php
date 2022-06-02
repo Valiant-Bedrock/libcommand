@@ -14,10 +14,9 @@ declare(strict_types=1);
 namespace libcommand\parameter\types;
 
 use libcommand\parameter\Parameter;
+use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\types\command\CommandEnum;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
-use function in_array;
-use function is_string;
 
 /**
  * @template TValue of mixed
@@ -37,22 +36,11 @@ abstract class AbstractEnumParameter extends Parameter {
 	}
 
 	/**
-	 * @param array<string>|string $input
+	 * @param CommandSender $sender
+	 * @param array<string> $input
 	 * @return TValue
 	 */
-	public abstract function parse(array|string $input): mixed;
-
-	/**
-	 * @param array<string>|string $input
-	 * @return bool
-	 */
-	public function validate(array|string $input): bool {
-		return is_string($input) && in_array($input, $this->enumValues, true);
-	}
-
-	public function getRequiredNumberOfArguments(): int {
-		return 1;
-	}
+	public abstract function parse(CommandSender $sender, array &$input): mixed;
 
 	public function getType(): int {
 		return -1;

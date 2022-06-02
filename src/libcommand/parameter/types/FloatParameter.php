@@ -14,7 +14,9 @@ declare(strict_types=1);
 namespace  libcommand\parameter\types;
 
 use  libcommand\parameter\Parameter;
+use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+use pocketmine\utils\AssumptionFailedError;
 use function assert;
 use function floatval;
 use function is_numeric;
@@ -24,17 +26,23 @@ use function is_numeric;
  */
 class FloatParameter extends Parameter {
 
-	public function parse(string|array $input): float {
-		assert(is_string($input));
-		return floatval($input);
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return float
+	 */
+	public function parse(CommandSender $sender, array &$input): float {
+		return floatval(array_shift($input) ?? throw new AssumptionFailedError("Expected value"));
 	}
 
-	public function validate(array|string $input): bool {
-		return is_numeric($input);
-	}
-
-	public function getRequiredNumberOfArguments(): int {
-		return 1;
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return bool
+	 */
+	public function validate(CommandSender $sender, array &$input): bool {
+		$value = array_shift($input);
+		return is_numeric($value);
 	}
 
 	public function getType(): int {

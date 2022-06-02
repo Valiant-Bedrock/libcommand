@@ -14,26 +14,31 @@ declare(strict_types=1);
 namespace libcommand\parameter\types;
 
 use libcommand\parameter\Parameter;
+use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+use pocketmine\utils\AssumptionFailedError;
 
 /**
- * TODO: DO NOT USE YET! The current system does not allow for unlimited argument counts (which is a sort of basis for this parameter type)
- *
  * @extends Parameter<string>
  */
 class StringParameter extends Parameter {
 
-	public function parse(array|string $input): string {
-		assert(is_string($input));
-		return $input;
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return string
+	 */
+	public function parse(CommandSender $sender, array &$input): string {
+		return array_shift($input) ?? throw new AssumptionFailedError("No more input to parse");
 	}
 
-	public function validate(array|string $input): bool {
-		return is_string($input);
-	}
-
-	public function getRequiredNumberOfArguments(): int {
-		return 1;
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return bool
+	 */
+	public function validate(CommandSender $sender, array &$input): bool {
+		return array_shift($input) !== null;
 	}
 
 	public function getType(): int {

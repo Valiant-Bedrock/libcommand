@@ -14,33 +14,20 @@ declare(strict_types=1);
 namespace  libcommand\parameter\types;
 
 use  libcommand\parameter\Parameter;
+use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
-use function assert;
 
 /**
  * @extends Parameter<string>
  */
 class RawTextParameter extends Parameter {
 
-	/**
-	 * @param string|array<string> $input
-	 * @return string
-	 */
-	public function parse(string|array $input): string {
-		assert(is_string($input));
-		return $input;
+	public function parse(CommandSender $sender, array &$input): string {
+		return implode(" ", array_splice($input, 0));
 	}
 
-	public function getRequiredNumberOfArguments(): int {
-		return 1;
-	}
-
-	/**
-	 * @param array<string>|string $input
-	 * @return bool
-	 */
-	public function validate(array|string $input): bool {
-		return is_string($input);
+	public function validate(CommandSender $sender, array &$input): bool {
+		return count(array_splice($input, 0)) > 0;
 	}
 
 	public function getType(): int {

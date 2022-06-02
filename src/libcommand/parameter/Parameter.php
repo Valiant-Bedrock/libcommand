@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace libcommand\parameter;
 
+use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 
@@ -34,25 +35,20 @@ abstract class Parameter {
 	/**
 	 * Parses the input into a usable format
 	 *
-	 * @param string|array<string> $input
-	 * @return mixed
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return T
 	 */
-	public abstract function parse(string|array $input): mixed;
+	public abstract function parse(CommandSender $sender, array &$input): mixed;
 
 	/**
 	 * Validates the input argument(s)
 	 *
-	 * @param string|array<string> $input
+	 * @param CommandSender $sender
+	 * @param array<string> $input
 	 * @return bool
 	 */
-	public abstract function validate(string|array $input): bool;
-
-	/**
-	 * Returns the amount of arguments this parameter requires to be parsed
-	 *
-	 * @return int
-	 */
-	public abstract function getRequiredNumberOfArguments(): int;
+	public abstract function validate(CommandSender $sender, array &$input): bool;
 
 	/**
 	 * Returns the parameter type from {@link AvailableCommandsPacket}

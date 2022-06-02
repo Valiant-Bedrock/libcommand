@@ -15,27 +15,35 @@ namespace libcommand\parameter\types;
 
 use libcommand\parameter\Parameter;
 use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\Server;
 use pocketmine\utils\AssumptionFailedError;
-use function is_string;
 
 /**
  * @extends Parameter<Command>
  */
 class CommandParameter extends Parameter {
 
-	public function parse(array|string $input): Command {
-		assert(is_string($input));
-		return Server::getInstance()->getCommandMap()->getCommand($input) ?? throw new AssumptionFailedError("Command '$input' not found");
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return Command
+	 */
+	public function parse(CommandSender $sender, array &$input): Command {
+		return Server::getInstance()->getCommandMap()->getCommand(
+			array_shift($input) ?? throw new AssumptionFailedError("Unable to parse input")
+		) ?? throw new AssumptionFailedError("Command not found");
 	}
 
-	public function validate(array|string $input): bool {
-		return is_string($input) && Server::getInstance()->getCommandMap()->getCommand($input) !== null;
-	}
-
-	public function getRequiredNumberOfArguments(): int {
-		return 1;
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return bool
+	 */
+	public function validate(CommandSender $sender, array &$input): bool {
+		$name = array_shift($input);
+		return is_string($name) && Server::getInstance()->getCommandMap()->getCommand($name) !== null;
 	}
 
 	public function getType(): int {

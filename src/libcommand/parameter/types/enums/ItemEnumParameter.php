@@ -15,8 +15,10 @@ namespace libcommand\parameter\types\enums;
 
 use libcommand\parameter\types\AbstractEnumParameter;
 use pocketmine\block\VanillaBlocks;
+use pocketmine\command\CommandSender;
 use pocketmine\item\Item;
 use pocketmine\item\StringToItemParser;
+use pocketmine\utils\AssumptionFailedError;
 
 /**
  * @extends AbstractEnumParameter<Item>
@@ -27,16 +29,23 @@ class ItemEnumParameter extends AbstractEnumParameter {
 		parent::__construct($name, "Item", [], $optional);
 	}
 
-	public function parse(array|string $input): Item {
-		assert(is_string($input));
-		$item = $this->parseFromString($input);
-		assert($item instanceof Item);
-		return $item;
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return Item
+	 */
+	public function parse(CommandSender $sender, array &$input): Item {
+		return $this->parseFromString(array_shift($input) ?? throw new AssumptionFailedError("Expected value")) ?? throw new AssumptionFailedError("Unable to locate block");
 	}
 
-	public function validate(array|string $input): bool {
-		assert(is_string($input));
-		return $this->parseFromString($input) !== null;
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return bool
+	 */
+	public function validate(CommandSender $sender, array &$input): bool {
+		$value = array_shift($input);
+		return is_string($value) && $this->parseFromString($value) !== null;
 	}
 
 	public function parseFromString(string $input): ?Item {

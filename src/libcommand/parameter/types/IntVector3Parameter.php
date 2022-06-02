@@ -13,18 +13,32 @@ declare(strict_types=1);
 
 namespace libcommand\parameter\types;
 
+use libcommand\parameter\Parameter;
+use pocketmine\command\CommandSender;
 use pocketmine\math\Vector3;
+use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 
-class IntVector3Parameter extends Vector3Parameter {
+/**
+ * @extends Parameter<Vector3>
+ */
+class IntVector3Parameter extends Parameter {
 
 	/**
-	 * @param string|array<string> $input
+	 * @param CommandSender $sender
+	 * @param array<string> $input
 	 * @return Vector3
 	 */
-	public function parse(string|array $input): Vector3 {
-		assert(is_array($input));
-		[$x, $y, $z] = $input;
+	public function parse(CommandSender $sender, array &$input): Vector3 {
+		[$x, $y, $z] = array_splice($input, 0, 3);
 		return new Vector3(x: intval($x), y: intval($y), z: intval($z));
+	}
+
+	public function validate(CommandSender $sender, array &$input): bool {
+		return count(array_splice($input, 0, 3)) === 3;
+	}
+
+	public function getType(): int {
+		return AvailableCommandsPacket::ARG_TYPE_INT_POSITION;
 	}
 
 }

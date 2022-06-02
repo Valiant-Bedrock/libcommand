@@ -13,18 +13,39 @@ declare(strict_types=1);
 
 namespace libcommand\parameter\types;
 
+use libcommand\parameter\Parameter;
+use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\network\mcpe\protocol\types\command\CommandEnum;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 
-class SubcommandParameter extends StringParameter {
+/**
+ * @extends Parameter<string>
+ */
+class SubcommandParameter extends Parameter {
 
 	public function __construct(string $name) {
 		parent::__construct($name);
 	}
 
-	public function validate(array|string $input): bool {
-		return is_string($input) && $input === $this->name;
+	public function parse(CommandSender $sender, array &$input): string {
+		// shift the input by one and return the name
+		array_shift($input);
+		return $this->name;
+	}
+
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return bool
+	 */
+	public function validate(CommandSender $sender, array &$input): bool {
+		$value = array_shift($input);
+		return is_string($value) && $value === $this->name;
+	}
+
+	public function getType(): int {
+		return -1;
 	}
 
 	public function encode(): CommandParameter {
@@ -36,5 +57,4 @@ class SubcommandParameter extends StringParameter {
 		$parameter->enum = new CommandEnum(enumName: "{$this->name}_values", enumValues: [$this->name]);
 		return $parameter;
 	}
-
 }

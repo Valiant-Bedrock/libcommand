@@ -13,9 +13,33 @@ declare(strict_types=1);
 
 namespace libcommand\parameter\types;
 
+use libcommand\parameter\Parameter;
+use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+use pocketmine\utils\AssumptionFailedError;
 
-class MessageParameter extends StringParameter {
+/**
+ * @extends Parameter<string>
+ */
+class MessageParameter extends Parameter {
+
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return string
+	 */
+	public function parse(CommandSender $sender, array &$input): string {
+		return array_shift($input) ?? throw new AssumptionFailedError("Expected value");
+	}
+
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return bool
+	 */
+	public function validate(CommandSender $sender, array &$input): bool {
+		return is_string(array_shift($input));
+	}
 
 	public function getType(): int {
 		return AvailableCommandsPacket::ARG_TYPE_MESSAGE;

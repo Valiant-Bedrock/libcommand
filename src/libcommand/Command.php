@@ -57,13 +57,13 @@ abstract class Command extends \pocketmine\command\Command {
 	public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
 		$arguments = [];
 		if(count($this->overloads) > 0) {
-			$overload = $this->matchArgsToOverload($args);
+			$overload = $this->findOverload($sender, $args);
 			if($overload === null) {
 				$sender->sendMessage(TextFormat::RED . $sender->getLanguage()->translate(KnownTranslationFactory::commands_generic_usage($this->getUsage())));
 				return false;
 			}
 			/** @var array<string, mixed> $arguments */
-			$arguments = $overload->map($args);
+			$arguments = $overload->map($sender, $args);
 		}
 		$value = $this->onExecute($sender, $arguments);
 		if(is_string($value)) {
@@ -81,12 +81,13 @@ abstract class Command extends \pocketmine\command\Command {
 	public abstract function onExecute(CommandSender $sender, array $arguments): bool|string;
 
 	/**
+	 * @param CommandSender $sender
 	 * @param array<string> $args
 	 * @return Overload|null
 	 */
-	protected function matchArgsToOverload(array $args): ?Overload {
+	protected function findOverload(CommandSender $sender, array $args): ?Overload {
 		foreach ($this->overloads as $overload) {
-			if ($overload->matches($args)) {
+			if ($overload->validate($sender, $args)) {
 				return $overload;
 			}
 		}

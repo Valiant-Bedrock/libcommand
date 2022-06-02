@@ -13,15 +13,25 @@ declare(strict_types=1);
 
 namespace libcommand\parameter\types;
 
+use libcommand\parameter\Parameter;
+use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+use pocketmine\utils\AssumptionFailedError;
 
-class OperatorParameter extends StringParameter {
+/**
+ * @extends Parameter<string>
+ */
+class OperatorParameter extends Parameter {
 
-	public function validate(array|string $input): bool {
-		return is_string($input) && match(strtolower($input)) {
-			"+", "-", "*", "/", "%", => true,
-			default => false
-		};
+	public const ACCEPTED_VALUES = ["+" => true, "-" => true, "*" => true, "/" => true, "%" => true];
+
+	public function parse(CommandSender $sender, array &$input): mixed {
+		return array_shift($input) ?? throw new AssumptionFailedError("Expected value");
+	}
+
+	public function validate(CommandSender $sender, array &$input): bool {
+		$value = array_shift($input);
+		return is_string($value) && isset(self::ACCEPTED_VALUES[$value]);
 	}
 
 	public function getType(): int {
