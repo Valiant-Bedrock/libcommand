@@ -19,9 +19,6 @@ use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\network\mcpe\protocol\types\command\CommandEnum;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 
-/**
- * @extends Parameter<string>
- */
 class SubcommandParameter extends Parameter {
 
 	public function __construct(string $name) {

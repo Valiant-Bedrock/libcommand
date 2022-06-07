@@ -20,9 +20,6 @@ use pocketmine\item\Item;
 use pocketmine\item\StringToItemParser;
 use pocketmine\utils\AssumptionFailedError;
 
-/**
- * @extends AbstractEnumParameter<Item>
- */
 class ItemEnumParameter extends AbstractEnumParameter {
 
 	public function __construct(string $name, bool $optional = false) {

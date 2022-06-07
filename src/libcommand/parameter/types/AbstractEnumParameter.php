@@ -18,17 +18,12 @@ use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\types\command\CommandEnum;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 
-/**
- * @template TValue of mixed
- *
- * @extends Parameter<TValue>
- */
 abstract class AbstractEnumParameter extends Parameter {
 
 	/**
 	 * @param string $name
 	 * @param string $enumName
-	 * @param array<TValue> $enumValues
+	 * @param array<int, mixed> $enumValues
 	 * @param bool $optional
 	 */
 	public function __construct(string $name, protected string $enumName, protected array $enumValues, bool $optional = false) {
@@ -38,7 +33,7 @@ abstract class AbstractEnumParameter extends Parameter {
 	/**
 	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return TValue
+	 * @return mixed
 	 */
 	public abstract function parse(CommandSender $sender, array &$input): mixed;
 

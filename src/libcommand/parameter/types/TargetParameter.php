@@ -24,8 +24,6 @@ use function is_string;
 
 /**
  * TODO: This only supports players and not targets like @a, @e, @p, @r, etc.
- *
- * @extends Parameter<Player>
  */
 class TargetParameter extends Parameter {
 

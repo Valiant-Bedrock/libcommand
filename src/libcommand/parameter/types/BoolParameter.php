@@ -18,9 +18,6 @@ use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\types\command\CommandEnum;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 
-/**
- * @extends Parameter<bool>
- */
 class BoolParameter extends Parameter {
 
 	protected const ENUM_NAME = "Boolean";

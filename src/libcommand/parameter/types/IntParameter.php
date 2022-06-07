@@ -17,13 +17,9 @@ use  libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\utils\AssumptionFailedError;
-use function assert;
 use function intval;
 use function is_numeric;
 
-/**
- * @extends Parameter<int>
- */
 class IntParameter extends Parameter {
 
 	/**

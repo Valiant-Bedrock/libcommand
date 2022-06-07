@@ -22,7 +22,7 @@ class Overload {
 
 	/**
 	 * @param string $name
-	 * @param array<Parameter<mixed>> $parameters
+	 * @param array<Parameter> $parameters
 	 */
 	public function __construct(protected string $name, protected array $parameters) {
 		$last = null;
@@ -41,14 +41,14 @@ class Overload {
 	}
 
 	/**
-	 * @return array<Parameter<mixed>>
+	 * @return array<Parameter>
 	 */
 	public function getParameters(): array {
 		return $this->parameters;
 	}
 
 	/**
-	 * @return array<Parameter<mixed>>
+	 * @return array<Parameter>
 	 */
 	public function getRequiredParameters(): array {
 		return array_filter(

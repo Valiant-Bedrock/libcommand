@@ -21,8 +21,6 @@ use function count;
 
 /**
  * TODO: DO NOT USE YET! This parameter can not yet parse offsets.
- *
- * @extends Parameter<Vector3>
  */
 class Vector3Parameter extends Parameter {
 

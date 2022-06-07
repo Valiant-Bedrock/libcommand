@@ -18,9 +18,6 @@ use pocketmine\command\CommandSender;
 use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 
-/**
- * @extends Parameter<Vector3>
- */
 class IntVector3Parameter extends Parameter {
 
 	/**

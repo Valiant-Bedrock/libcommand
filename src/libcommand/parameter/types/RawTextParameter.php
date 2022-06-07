@@ -17,9 +17,6 @@ use  libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 
-/**
- * @extends Parameter<string>
- */
 class RawTextParameter extends Parameter {
 
 	public function parse(CommandSender $sender, array &$input): string {

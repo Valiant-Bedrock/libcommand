@@ -21,9 +21,6 @@ use function assert;
 use function floatval;
 use function is_numeric;
 
-/**
- * @extends Parameter<float>
- */
 class FloatParameter extends Parameter {
 
 	/**

@@ -17,10 +17,6 @@ use libcommand\parameter\types\AbstractEnumParameter;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\AssumptionFailedError;
 
-
-/**
- * @extends AbstractEnumParameter<string>
- */
 class EnumParameter extends AbstractEnumParameter {
 
 	/**

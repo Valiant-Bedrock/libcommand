@@ -19,9 +19,6 @@ use pocketmine\block\VanillaBlocks;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\AssumptionFailedError;
 
-/**
- * @extends AbstractEnumParameter<Block>
- */
 class BlockEnumParameter extends AbstractEnumParameter {
 
 	public function __construct(string $name, bool $optional = false) {

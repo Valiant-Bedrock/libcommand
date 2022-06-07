@@ -17,9 +17,6 @@ use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 
-/**
- * @template T as mixed
- */
 abstract class Parameter {
 
 	public function __construct(protected string $name, protected bool $optional = false) {}
@@ -37,7 +34,7 @@ abstract class Parameter {
 	 *
 	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return T
+	 * @return mixed
 	 */
 	public abstract function parse(CommandSender $sender, array &$input): mixed;
 

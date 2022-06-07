@@ -20,9 +20,6 @@ use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\Server;
 use pocketmine\utils\AssumptionFailedError;
 
-/**
- * @extends Parameter<Command>
- */
 class CommandParameter extends Parameter {
 
 	/**

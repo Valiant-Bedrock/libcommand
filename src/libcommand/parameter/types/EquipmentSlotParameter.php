@@ -18,9 +18,6 @@ use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\utils\AssumptionFailedError;
 
-/**
- * @extends Parameter<string>
- */
 class EquipmentSlotParameter extends Parameter {
 
 	public const ACCEPTED_VALUES = [
