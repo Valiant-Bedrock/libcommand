@@ -1,13 +1,18 @@
 <?php
 /**
+ *  _ _ _                                                   _
+ * | (_) |                                                 | |
+ * | |_| |__   ___ ___  _ __ ___  _ __ ___   __ _ _ __   __| |
+ * | | | '_ \ / __/ _ \| '_ ` _ \| '_ ` _ \ / _` | '_ \ / _` |
+ * | | | |_) | (_| (_) | | | | | | | | | | | (_| | | | | (_| |
+ * |_|_|_.__/ \___\___/|_| |_| |_|_| |_| |_|\__,_|_| |_|\__,_|
  *
- * Copyright (C) 2020 - 2022 | Matthew Jordan
+ * This library is free software licensed under the MIT license.
+ * For more information about the license, visit the link below:
  *
- * This program is private software. You may not redistribute this software, or
- * any derivative works of this software, in source or binary form, without
- * the express permission of the owner.
+ * https://opensource.org/licenses/MIT
  *
- * @author sylvrs
+ * Copyright (c) 2022 Matthew Jordan
  */
 declare(strict_types=1);
 
@@ -19,7 +24,6 @@ use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use pocketmine\utils\AssumptionFailedError;
-use function assert;
 use function is_string;
 
 /**

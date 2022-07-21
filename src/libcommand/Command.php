@@ -1,13 +1,18 @@
 <?php
 /**
+ *  _ _ _                                                   _
+ * | (_) |                                                 | |
+ * | |_| |__   ___ ___  _ __ ___  _ __ ___   __ _ _ __   __| |
+ * | | | '_ \ / __/ _ \| '_ ` _ \| '_ ` _ \ / _` | '_ \ / _` |
+ * | | | |_) | (_| (_) | | | | | | | | | | | (_| | | | | (_| |
+ * |_|_|_.__/ \___\___/|_| |_| |_|_| |_| |_|\__,_|_| |_|\__,_|
  *
- * Copyright (C) 2020 - 2022 | Matthew Jordan
+ * This library is free software licensed under the MIT license.
+ * For more information about the license, visit the link below:
  *
- * This program is private software. You may not redistribute this software, or
- * any derivative works of this software, in source or binary form, without
- * the express permission of the owner.
+ * https://opensource.org/licenses/MIT
  *
- * @author sylvrs
+ * Copyright (c) 2022 Matthew Jordan
  */
 declare(strict_types=1);
 
@@ -26,9 +31,16 @@ abstract class Command extends \pocketmine\command\Command {
 	 * @param Translatable|string|null $usageMessage
 	 * @param array<string> $aliases
 	 * @param array<Overload> $overloads
+	 * @param string|null $permission
+	 * @param string|null $permissionMessage
 	 */
-	public function __construct(string $name, Translatable|string $description = "", Translatable|string|null $usageMessage = null, array $aliases = [], protected array $overloads = []) {
+	public function __construct(string $name, Translatable|string $description = "", Translatable|string|null $usageMessage = null, array $aliases = [], protected array $overloads = [], ?string $permission = null, ?string $permissionMessage = null) {
 		parent::__construct($name, $description, $usageMessage, $aliases);
+		if ($permission !== null) {
+			$this->setPermission($permission);
+			assert($permissionMessage !== null, "Permission message cannot be null if permission is set.");
+			$this->setPermissionMessage($permissionMessage);
+		}
 	}
 
 	public function registerOverload(Overload $overload): void {
@@ -62,7 +74,6 @@ abstract class Command extends \pocketmine\command\Command {
 				$sender->sendMessage(TextFormat::RED . $sender->getLanguage()->translate(KnownTranslationFactory::commands_generic_usage($this->getUsage())));
 				return false;
 			}
-			/** @var array<string, mixed> $arguments */
 			$arguments = $overload->map($sender, $args);
 		}
 		$value = $this->onExecute($sender, $arguments);

@@ -1,13 +1,18 @@
 <?php
 /**
+ *  _ _ _                                                   _
+ * | (_) |                                                 | |
+ * | |_| |__   ___ ___  _ __ ___  _ __ ___   __ _ _ __   __| |
+ * | | | '_ \ / __/ _ \| '_ ` _ \| '_ ` _ \ / _` | '_ \ / _` |
+ * | | | |_) | (_| (_) | | | | | | | | | | | (_| | | | | (_| |
+ * |_|_|_.__/ \___\___/|_| |_| |_|_| |_| |_|\__,_|_| |_|\__,_|
  *
- * Copyright (C) 2020 - 2022 | Matthew Jordan
+ * This library is free software licensed under the MIT license.
+ * For more information about the license, visit the link below:
  *
- * This program is private software. You may not redistribute this software, or
- * any derivative works of this software, in source or binary form, without
- * the express permission of the owner.
+ * https://opensource.org/licenses/MIT
  *
- * @author sylvrs
+ * Copyright (c) 2022 Matthew Jordan
  */
 declare(strict_types=1);
 
@@ -33,45 +38,45 @@ use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 use pocketmine\utils\RegistryTrait;
 
 /**
- * @method static VanillaCommands BAN()
- * @method static VanillaCommands BAN_IP()
- * @method static VanillaCommands BANLIST()
- * @method static VanillaCommands CLEAR()
- * @method static VanillaCommands DEFAULTGAMEMODE()
- * @method static VanillaCommands DEOP()
- * @method static VanillaCommands DIFFICULTY()
- * @method static VanillaCommands DUMPMEMORY()
- * @method static VanillaCommands EFFECT()
- * @method static VanillaCommands ENCHANT()
- * @method static VanillaCommands GAMEMODE()
- * @method static VanillaCommands GC()
- * @method static VanillaCommands GIVE()
- * @method static VanillaCommands KICK()
- * @method static VanillaCommands KILL()
- * @method static VanillaCommands LIST()
- * @method static VanillaCommands ME()
- * @method static VanillaCommands OP()
- * @method static VanillaCommands PARDON()
- * @method static VanillaCommands PARDON_IP()
- * @method static VanillaCommands PARTICLE()
- * @method static VanillaCommands PLUGINS()
- * @method static VanillaCommands SAVE_ALL()
- * @method static VanillaCommands SAVE_OFF()
- * @method static VanillaCommands SAVE_ON()
- * @method static VanillaCommands SAY()
- * @method static VanillaCommands SEED()
- * @method static VanillaCommands SETWORLDSPAWN()
- * @method static VanillaCommands SPAWNPOINT()
- * @method static VanillaCommands STATUS()
- * @method static VanillaCommands STOP()
- * @method static VanillaCommands TELL()
- * @method static VanillaCommands TIME()
- * @method static VanillaCommands TP()
- * @method static VanillaCommands TIMINGS()
- * @method static VanillaCommands TITLE()
- * @method static VanillaCommands TRANSFERSERVER()
- * @method static VanillaCommands VERSION()
- * @method static VanillaCommands WHITELIST()
+ * @method static self BAN()
+ * @method static self BAN_IP()
+ * @method static self BANLIST()
+ * @method static self CLEAR()
+ * @method static self DEFAULTGAMEMODE()
+ * @method static self DEOP()
+ * @method static self DIFFICULTY()
+ * @method static self DUMPMEMORY()
+ * @method static self EFFECT()
+ * @method static self ENCHANT()
+ * @method static self GAMEMODE()
+ * @method static self GC()
+ * @method static self GIVE()
+ * @method static self KICK()
+ * @method static self KILL()
+ * @method static self LIST()
+ * @method static self ME()
+ * @method static self OP()
+ * @method static self PARDON()
+ * @method static self PARDON_IP()
+ * @method static self PARTICLE()
+ * @method static self PLUGINS()
+ * @method static self SAVE_ALL()
+ * @method static self SAVE_OFF()
+ * @method static self SAVE_ON()
+ * @method static self SAY()
+ * @method static self SEED()
+ * @method static self SETWORLDSPAWN()
+ * @method static self SPAWNPOINT()
+ * @method static self STATUS()
+ * @method static self STOP()
+ * @method static self TELL()
+ * @method static self TIME()
+ * @method static self TP()
+ * @method static self TIMINGS()
+ * @method static self TITLE()
+ * @method static self TRANSFERSERVER()
+ * @method static self VERSION()
+ * @method static self WHITELIST()
  */
 final class VanillaCommands {
 	use RegistryTrait;
@@ -396,7 +401,7 @@ final class VanillaCommands {
 			/** @var VanillaCommands|null $value */
 			$value = self::_registryFromString(str_replace("-", "_", $name));
 			return $value;
-		} catch(InvalidArgumentException $exception) {
+		} catch(InvalidArgumentException) {
 			return null;
 		}
 	}

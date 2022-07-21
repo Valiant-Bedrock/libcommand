@@ -1,13 +1,18 @@
 <?php
 /**
+ *  _ _ _                                                   _
+ * | (_) |                                                 | |
+ * | |_| |__   ___ ___  _ __ ___  _ __ ___   __ _ _ __   __| |
+ * | | | '_ \ / __/ _ \| '_ ` _ \| '_ ` _ \ / _` | '_ \ / _` |
+ * | | | |_) | (_| (_) | | | | | | | | | | | (_| | | | | (_| |
+ * |_|_|_.__/ \___\___/|_| |_| |_|_| |_| |_|\__,_|_| |_|\__,_|
  *
- * Copyright (C) 2020 - 2022 | Matthew Jordan
+ * This library is free software licensed under the MIT license.
+ * For more information about the license, visit the link below:
  *
- * This program is private software. You may not redistribute this software, or
- * any derivative works of this software, in source or binary form, without
- * the express permission of the owner.
+ * https://opensource.org/licenses/MIT
  *
- * @author sylvrs
+ * Copyright (c) 2022 Matthew Jordan
  */
 declare(strict_types=1);
 
@@ -17,13 +22,24 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 
+/**
+ * A command class used to restrict command access to players.
+ */
 abstract class PlayerCommand extends Command {
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
+	final public function onExecute(CommandSender $sender, array $arguments): bool|string {
 		if(!$sender instanceof Player) {
-			$sender->sendMessage(TextFormat::RED . "This command can only be used in-game.");
-			return false;
+			return TextFormat::RED . "This command can only be used in-game.";
 		}
-		return parent::execute($sender, $commandLabel, $args);
+		return $this->onPlayerExecute($sender, $arguments);
 	}
+
+	/**
+	 * The method that is called when the command is executed by a player.
+	 *
+	 * @param Player $player
+	 * @param array<string, mixed> $arguments
+	 * @return bool|string
+	 */
+	public abstract function onPlayerExecute(Player $player, array $arguments): bool|string;
 }

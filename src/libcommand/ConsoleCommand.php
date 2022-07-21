@@ -1,13 +1,18 @@
 <?php
 /**
+ *  _ _ _                                                   _
+ * | (_) |                                                 | |
+ * | |_| |__   ___ ___  _ __ ___  _ __ ___   __ _ _ __   __| |
+ * | | | '_ \ / __/ _ \| '_ ` _ \| '_ ` _ \ / _` | '_ \ / _` |
+ * | | | |_) | (_| (_) | | | | | | | | | | | (_| | | | | (_| |
+ * |_|_|_.__/ \___\___/|_| |_| |_|_| |_| |_|\__,_|_| |_|\__,_|
  *
- * Copyright (C) 2020 - 2022 | Matthew Jordan
+ * This library is free software licensed under the MIT license.
+ * For more information about the license, visit the link below:
  *
- * This program is private software. You may not redistribute this software, or
- * any derivative works of this software, in source or binary form, without
- * the express permission of the owner.
+ * https://opensource.org/licenses/MIT
  *
- * @author sylvrs
+ * Copyright (c) 2022 Matthew Jordan
  */
 declare(strict_types=1);
 
@@ -17,13 +22,29 @@ use pocketmine\command\CommandSender;
 use pocketmine\console\ConsoleCommandSender;
 use pocketmine\utils\TextFormat;
 
+/**
+ * A command class used to restrict command access to the console.
+ */
 abstract class ConsoleCommand extends Command {
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string, mixed> $arguments
+	 * @return string|bool
+	 */
+	final public function onExecute(CommandSender $sender, array $arguments): string|bool {
 		if(!$sender instanceof ConsoleCommandSender) {
-			$sender->sendMessage(TextFormat::RED . "This command can only be used by the console.");
-			return false;
+			return TextFormat::RED . "This command can only be used by the console.";
 		}
-		return parent::execute($sender, $commandLabel, $args);
+		return $this->onConsoleExecute($sender, $arguments);
 	}
+
+	/**
+	 * The method to execute when the command is executed by the console.
+	 *
+	 * @param ConsoleCommandSender $sender
+	 * @param array<string, mixed> $arguments
+	 * @return string|bool
+	 */
+	public abstract function onConsoleExecute(ConsoleCommandSender $sender, array $arguments): string|bool;
 }

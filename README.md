@@ -1,6 +1,8 @@
 # libcommand
 A small PocketMine-MP command library meant to simplify the process of creating commands while also enhancing the user experience.
 
+NOTE: This library is still in development and as such, the API is subject to change.
+
 # How to Use?
 
 ## Parameter
