@@ -99,7 +99,10 @@ class SimpleCommand extends \libcommand\Command {
                     new \libcommand\IntParameter(name: "test_int", description: "Test integer parameter", optional: false),
                     new \libcommand\RawTextParameter(name: "test_raw", description: "Test raw text parameter", optional: true)
                 ])
-            ]
+            ],
+            // Permissions and their messages can also be specified using the `permission` and `permissionMessage` properties.
+            // permission: "simple.command",
+            // permissionMessage: Ouch! You don't have permission to use SimpleCommand!"
         );
     }
     public function onExecute(\pocketmine\command\CommandSender $sender, array $arguments) : bool|string {
