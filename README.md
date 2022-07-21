@@ -108,7 +108,7 @@ class SimpleCommand extends \libcommand\Command {
     public function onExecute(\pocketmine\command\CommandSender $sender, array $arguments) : bool|string {
         $int = $arguments["test_int"];
         $raw = $arguments["test_raw"] ?? "fallback raw text";
-        // Returning a string will be sent to the sender as a message
+        // Returning a string will send the sender the returned message
         return "Simple command executed with $int and $raw";
     }
 
