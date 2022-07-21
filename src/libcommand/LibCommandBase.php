@@ -61,6 +61,8 @@ final class LibCommandBase {
 	}
 
 	/**
+	 * Maps a command's overloads to a PocketMine-MP compatible array of CommandParameters.
+	 *
 	 * @param Command $command
 	 * @return array<array<CommandParameter>>
 	 */
@@ -75,6 +77,8 @@ final class LibCommandBase {
 	}
 
 	/**
+	 * This is a lazy-loaded method that will return all commands that are a subclass of libcommand\Command.
+	 *
 	 * @return array<Command>
 	 */
 	private static function getCompatibleCommands(): array {
