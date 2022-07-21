@@ -36,9 +36,9 @@ abstract class Command extends \pocketmine\command\Command {
 	 */
 	public function __construct(string $name, Translatable|string $description = "", Translatable|string|null $usageMessage = null, array $aliases = [], protected array $overloads = [], ?string $permission = null, ?string $permissionMessage = null) {
 		parent::__construct($name, $description, $usageMessage, $aliases);
-		if ($permission !== null) {
-			$this->setPermission($permission);
-			assert($permissionMessage !== null, "Permission message cannot be null if permission is set.");
+		$this->setPermission($permission);
+		// Only set the permission message if it's not null.
+		if ($permissionMessage !== null) {
 			$this->setPermissionMessage($permissionMessage);
 		}
 	}
