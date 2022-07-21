@@ -37,9 +37,9 @@ abstract class PlayerCommand extends Command {
 	/**
 	 * The method that is called when the command is executed by a player.
 	 *
-	 * @param Player $player
+	 * @param Player $sender
 	 * @param array<string, mixed> $arguments
 	 * @return bool|string
 	 */
-	public abstract function onPlayerExecute(Player $player, array $arguments): bool|string;
+	public abstract function onPlayerExecute(Player $sender, array $arguments): bool|string;
 }
