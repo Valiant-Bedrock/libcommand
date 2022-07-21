@@ -76,7 +76,15 @@ abstract class Command extends \pocketmine\command\Command {
 			}
 			$arguments = $overload->map($sender, $args);
 		}
+
+		// Ensure that the sender has permission to use the command before execution
+		// `testPermission` has the side effect of sending a message to the sender if they don't have permission, so we don't need to check that here.
+		if (!$this->testPermission($sender)) {
+			return false;
+		}
+
 		$value = $this->onExecute($sender, $arguments);
+		// If the return value is a string, we can assume they want to send the sender a message
 		if (is_string($value)) {
 			$sender->sendMessage($value);
 			return true;
