@@ -3,9 +3,15 @@ A small PocketMine-MP command library meant to simplify the process of creating 
 
 NOTE: This library is still in development and as such, the API is subject to change.
 
-# How to Use?
+## Installation
+This library can be installed using Composer:
+```
+composer require valiant-bedrock/libcommand
+```
 
-## Parameter
+## Usage
+
+### Parameter
 At the basis of the library, there is the parameter. In most instances, the parameter class accepts two properties:
 - `name` - The name of the parameter. This is used in the command's `onExecute()` method as well as sent to the client.
 - `optional` - Whether the parameter is optional. If the parameter is optional, it will not be required in the overload. When sent to the client, it will be displayed as `<name>` if not optional. Otherwise, it'll be displayed as `[name]`.
@@ -15,9 +21,9 @@ A simple raw-text parameter looks like so:
 $parameter = new \libcommand\parameter\types\RawTextParameter(name: "text", optional: true);
 ```
 
-## Parameter Types
+### Parameter Types
 This is a list of all current parameter types:
-### Standard
+#### Standard
 | Class Name                | Return Type      | Description                                                                                      |
 |:--------------------------|:-----------------|:-------------------------------------------------------------------------------------------------|
 | `CommandParameter`        | `Command`        | Accepts any registered command that has been sent to the client.                                 |
@@ -46,7 +52,7 @@ This is a list of all current parameter types:
 | `ItemEnumParameter`   | `Item`      | An Enum parameter that displays a list of items to the client             |
 
 
-## `Overload`
+### `Overload`
 In the terms of commands, an overload is a set of parameters that a command can take. An overload is defined by an array of `Parameter` objects. Here is how a simple overload class looks:
 
 ```php
@@ -69,12 +75,16 @@ access the parameter values through their name (e.g., `new StringParameter("name
 
 #### Command Sender Access
 To limit the access to the command, you can use the `ConsoleCommand` class or `PlayerCommand` class. This will verify the command sender before executing the command.
-Each of these classes have their own special method, `onPlayerExecute()` & `onConsoleExecute()`, which is called after the sender is verified.
+Each of these classes have their own special methods that are called after the sender is verified:
+- `PlayerCommand`: `onPlayerExecute(Player $player, array $arguments): bool|string`
+- `ConsoleCommand`: `onConsoleExecute(ConsoleCommandSender $sender, array $arguments): bool|string`
 
-## Simple Example
+NOTE: These methods do replace the `onExecute()` method.
+
+### Simple Example
 Below is a simple example on how to create and register commands.
 
-## Command Class
+#### Command Class
 
 ```php
 class SimpleCommand extends \libcommand\Command {
@@ -101,8 +111,7 @@ class SimpleCommand extends \libcommand\Command {
 
 }
 ```
-## Registration
-
+### Registration
 ```php
 class SimplePlugin extends \pocketmine\plugin\PluginBase {
 
@@ -119,10 +128,10 @@ class SimplePlugin extends \pocketmine\plugin\PluginBase {
 }
 ```
 
-## Types
+### Types
 These types are associated with the various parameters.
 
-### Equipment Slot
+#### Equipment Slot
 - `slot.armor`
 - `slot.armor.head`
 - `slot.armor.chest`
@@ -136,8 +145,6 @@ These types are associated with the various parameters.
 - `slot.saddle`
 - `slot.weapon.mainhand`
 - `slot.weapon.offhand`
-
-
 
 ## Roadmap
 - [ ] Generate usage messages based off of overloads
