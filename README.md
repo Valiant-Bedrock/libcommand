@@ -131,6 +131,11 @@ class SimplePlugin extends \pocketmine\plugin\PluginBase {
 }
 ```
 
+### Vanilla Command Rendering
+While not supported by default, `libcommand\VanillaCommandPatcher::register(PluginBase $plugin)` can be used to patch the default vanilla commands and render them client-side.
+NOTE: This may be separated into a separate plugin in the future, but as of now, it is bundled with the library.
+
+
 ### Types
 These types are associated with the various parameters.
 
