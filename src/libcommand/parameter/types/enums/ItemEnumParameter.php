@@ -51,9 +51,9 @@ class ItemEnumParameter extends AbstractEnumParameter {
 	}
 
 	public function parseFromString(string $input): ?Item {
-		if(($item = StringToItemParser::getInstance()->parse($input)) !== null) {
+		if (($item = StringToItemParser::getInstance()->parse($input)) !== null) {
 			return $item;
-		} elseif(($block = VanillaBlocks::getAll()[strtoupper($input)]) !== null) {
+		} elseif (($block = VanillaBlocks::getAll()[strtoupper($input)]) !== null) {
 			return $block->asItem();
 		}
 		return null;

@@ -35,20 +35,20 @@ final class LibCommandBase {
 	public static bool $registered = false;
 
 	public static function register(PluginBase $plugin): void {
-		if(self::$registered) {
+		if (self::$registered) {
 			return;
 		}
 		$plugin->getServer()->getPluginManager()->registerEvent(
 			event: DataPacketSendEvent::class,
 			handler: function(DataPacketSendEvent $event): void {
-				foreach($event->getPackets() as $packet) {
-					if($packet instanceof AvailableCommandsPacket) {
+				foreach ($event->getPackets() as $packet) {
+					if ($packet instanceof AvailableCommandsPacket) {
 						$commands = self::getCompatibleCommands();
-						foreach($commands as $command) {
+						foreach ($commands as $command) {
 							$filtered = array_filter($packet->commandData, fn(CommandData $data): bool => $data->name === $command->getName());
 							/** @var CommandData $data */
 							$data = $filtered[array_key_first($filtered)] ?? null;
-							if($data !== null) {
+							if ($data !== null) {
 								$data->overloads = self::mapOverloadsToPacket($command);
 							}
 						}

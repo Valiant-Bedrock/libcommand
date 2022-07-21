@@ -68,16 +68,16 @@ abstract class Command extends \pocketmine\command\Command {
 	 */
 	public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
 		$arguments = [];
-		if(count($this->overloads) > 0) {
+		if (count($this->overloads) > 0) {
 			$overload = $this->findOverload($sender, $args);
-			if($overload === null) {
+			if ($overload === null) {
 				$sender->sendMessage(TextFormat::RED . $sender->getLanguage()->translate(KnownTranslationFactory::commands_generic_usage($this->getUsage())));
 				return false;
 			}
 			$arguments = $overload->map($sender, $args);
 		}
 		$value = $this->onExecute($sender, $arguments);
-		if(is_string($value)) {
+		if (is_string($value)) {
 			$sender->sendMessage($value);
 			return true;
 		}

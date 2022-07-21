@@ -28,7 +28,7 @@ use pocketmine\utils\TextFormat;
 abstract class PlayerCommand extends Command {
 
 	final public function onExecute(CommandSender $sender, array $arguments): bool|string {
-		if(!$sender instanceof Player) {
+		if (!$sender instanceof Player) {
 			return TextFormat::RED . "This command can only be used in-game.";
 		}
 		return $this->onPlayerExecute($sender, $arguments);

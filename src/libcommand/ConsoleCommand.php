@@ -33,7 +33,7 @@ abstract class ConsoleCommand extends Command {
 	 * @return string|bool
 	 */
 	final public function onExecute(CommandSender $sender, array $arguments): string|bool {
-		if(!$sender instanceof ConsoleCommandSender) {
+		if (!$sender instanceof ConsoleCommandSender) {
 			return TextFormat::RED . "This command can only be used by the console.";
 		}
 		return $this->onConsoleExecute($sender, $arguments);

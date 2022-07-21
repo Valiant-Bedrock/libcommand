@@ -8,7 +8,7 @@ NOTE: This library is still in development and as such, the API is subject to ch
 ## Parameter
 At the basis of the library, there is the parameter. In most instances, the parameter class accepts two properties:
 - `name` - The name of the parameter. This is used in the command's `onExecute()` method as well as sent to the client.
-- `optional` - Whether or not the parameter is optional. If the parameter is optional, it will not be required in the overload. When sent to the client, it will be displayed as `<name>` if not optional. Otherwise, it'll be displayed as `[name]`.
+- `optional` - Whether the parameter is optional. If the parameter is optional, it will not be required in the overload. When sent to the client, it will be displayed as `<name>` if not optional. Otherwise, it'll be displayed as `[name]`.
 
 A simple raw-text parameter looks like so:
 ```php
@@ -69,6 +69,7 @@ access the parameter values through their name (e.g., `new StringParameter("name
 
 #### Command Sender Access
 To limit the access to the command, you can use the `ConsoleCommand` class or `PlayerCommand` class. This will verify the command sender before executing the command.
+Each of these classes have their own special method, `onPlayerExecute()` & `onConsoleExecute()`, which is called after the sender is verified.
 
 ## Simple Example
 Below is a simple example on how to create and register commands.

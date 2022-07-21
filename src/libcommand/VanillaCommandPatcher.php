@@ -31,17 +31,17 @@ final class VanillaCommandPatcher {
 	public static bool $registered = false;
 
 	public static function register(PluginBase $plugin): void {
-		if(self::$registered) {
+		if (self::$registered) {
 			return;
 		}
 		self::$registered = true;
 		$plugin->getServer()->getPluginManager()->registerEvent(
 			event: DataPacketSendEvent::class,
 			handler: function(DataPacketSendEvent $event): void {
-				foreach($event->getPackets() as $packet) {
-					if($packet instanceof AvailableCommandsPacket) {
-						foreach($packet->commandData as $command) {
-							if(($data = VanillaCommands::fromString($command->name)) !== null) {
+				foreach ($event->getPackets() as $packet) {
+					if ($packet instanceof AvailableCommandsPacket) {
+						foreach ($packet->commandData as $command) {
+							if (($data = VanillaCommands::fromString($command->name)) !== null) {
 								$command->overloads = $data->getMappedOverloads();
 							}
 						}

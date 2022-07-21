@@ -31,10 +31,10 @@ class Overload {
 	 */
 	public function __construct(protected string $name, protected array $parameters) {
 		$last = null;
-		foreach($this->parameters as $parameter) {
-			if($last !== null && $last->isOptional() && !$parameter->isOptional()) {
+		foreach ($this->parameters as $parameter) {
+			if ($last !== null && $last->isOptional() && !$parameter->isOptional()) {
 				throw new InvalidArgumentException("Optional parameters must not be followed by required parameters");
-			} elseif($last instanceof RawTextParameter) {
+			} elseif ($last instanceof RawTextParameter) {
 				throw new InvalidArgumentException("Raw text parameters must be last");
 			}
 			$last = $parameter;
@@ -71,12 +71,12 @@ class Overload {
 	 */
 	public function validate(CommandSender $sender, array $args): bool {
 		// If there are less args than required parameters, we can assume that this overload is not a match
-		if(count($args) < count($this->getRequiredParameters())) {
+		if (count($args) < count($this->getRequiredParameters())) {
 			return false;
 		}
-		foreach($this->parameters as $parameter) {
+		foreach ($this->parameters as $parameter) {
 			// Validate parameter
-			if(!$parameter->validate($sender, $args) && !$parameter->isOptional()) {
+			if (!$parameter->validate($sender, $args) && !$parameter->isOptional()) {
 				return false;
 			}
 		}
@@ -92,8 +92,8 @@ class Overload {
 	 */
 	public function map(CommandSender $sender, array &$args): array {
 		$output = [];
-		foreach($this->parameters as $parameter) {
-			if(count($args) <= 0) {
+		foreach ($this->parameters as $parameter) {
+			if (count($args) <= 0) {
 				// If there are no more arguments, we can break and return the output
 				break;
 			}
