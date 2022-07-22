@@ -1,0 +1,8 @@
+name: libcommand
+description: A PocketMine-MP library for registering commands with proper overloads
+authors:
+  - sylvrs
+version: 0.7.0
+php:
+  - 8.0
+antigen: libcommand
