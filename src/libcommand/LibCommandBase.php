@@ -33,9 +33,9 @@ use function array_map;
 final class LibCommandBase {
 
 	/** @var array<Command> */
-	public static array $commands;
+	private static array $commands;
 
-	public static bool $registered = false;
+	private static bool $registered = false;
 
 	public static function register(PluginBase $plugin): void {
 		if (self::$registered) {
