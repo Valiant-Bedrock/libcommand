@@ -43,7 +43,7 @@ This is a list of all current parameter types:
 | `Vector3Parameter`        | `Vector3<float>` | Accepts positional coordinates and returns a float-oriented Vector3                              |
 | `WildcardIntParameter`    | `int`            | (In progress / Not fully researched yet)                                                         |
 | `WildcardTargetParameter` | `Player`         | (In progress / Not fully researched yet)                                                         |
-### Custom
+#### Custom
 | Class Name            | Return Type | Description                                                               |
 |:----------------------|:------------|:--------------------------------------------------------------------------|
 | `BoolParameter`       | `bool`      | An Enum parameter that can be `true`, `false`, `1`, or `0`                |
@@ -102,7 +102,7 @@ class SimpleCommand extends \libcommand\Command {
             ],
             // Permissions and their messages can also be specified using the `permission` and `permissionMessage` properties.
             // permission: "simple.command",
-            // permissionMessage: Ouch! You don't have permission to use SimpleCommand!"
+            // permissionMessage: "Ouch! You don't have permission to use SimpleCommand!"
         );
     }
     public function onExecute(\pocketmine\command\CommandSender $sender, array $arguments) : bool|string {
