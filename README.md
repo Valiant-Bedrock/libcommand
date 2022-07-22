@@ -123,7 +123,6 @@ class SimpleCommand extends libcommand\Command {
 class SimplePlugin extends \pocketmine\plugin\PluginBase {
 
     protected function onEnable(): void {
-    
         // Registering `LibCommandBase` allows for client-sided rendering to be done
         libcommand\LibCommandBase::register(plugin: $this);
         $this->getServer()->getCommandMap()->register(
