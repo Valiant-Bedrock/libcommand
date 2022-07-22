@@ -16,7 +16,7 @@
  */
 declare(strict_types=1);
 
-namespace  libcommand\parameter\types;
+namespace libcommand\parameter\types;
 
 use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;

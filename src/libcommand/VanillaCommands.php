@@ -399,7 +399,7 @@ final class VanillaCommands {
 			/** @var VanillaCommands|null $value */
 			$value = self::_registryFromString(str_replace("-", "_", $name));
 			return $value;
-		} catch(InvalidArgumentException) {
+		} catch (InvalidArgumentException) {
 			return null;
 		}
 	}

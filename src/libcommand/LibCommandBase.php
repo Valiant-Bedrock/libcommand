@@ -43,7 +43,7 @@ final class LibCommandBase {
 		}
 		$plugin->getServer()->getPluginManager()->registerEvent(
 			event: DataPacketSendEvent::class,
-			handler: function(DataPacketSendEvent $event): void {
+			handler: function (DataPacketSendEvent $event): void {
 				foreach ($event->getPackets() as $packet) {
 					if ($packet instanceof AvailableCommandsPacket) {
 						$commands = self::getCompatibleCommands();

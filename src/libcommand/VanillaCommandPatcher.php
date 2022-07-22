@@ -37,7 +37,7 @@ final class VanillaCommandPatcher {
 		self::$registered = true;
 		$plugin->getServer()->getPluginManager()->registerEvent(
 			event: DataPacketSendEvent::class,
-			handler: function(DataPacketSendEvent $event): void {
+			handler: function (DataPacketSendEvent $event): void {
 				foreach ($event->getPackets() as $packet) {
 					if ($packet instanceof AvailableCommandsPacket) {
 						foreach ($packet->commandData as $command) {
