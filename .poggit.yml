@@ -4,7 +4,6 @@ branches:
 - master
 projects:
   libcommand:
-    path: ""
     model: virion
     type: library
 ...
