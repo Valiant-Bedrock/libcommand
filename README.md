@@ -114,7 +114,7 @@ class SimpleCommand extends \libcommand\Command {
 
 }
 ```
-### Registration
+#### Registration
 ```php
 class SimplePlugin extends \pocketmine\plugin\PluginBase {
 
