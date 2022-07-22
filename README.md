@@ -4,10 +4,13 @@ A small PocketMine-MP command library meant to simplify the process of creating 
 NOTE: This library is still in development and as such, the API is subject to change.
 
 ## Installation
-This library can be installed using Composer:
+### Composer
+The following command can be used to install the library using Composer:
 ```
 composer require valiant-bedrock/libcommand
 ```
+### Virion (Poggit)
+Virion support can be accessed through Poggit using [this link](https://poggit.pmmp.io/ci/Valiant-Bedrock/libcommand/~). 
 
 ## Usage
 
