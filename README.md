@@ -56,7 +56,7 @@ This is a list of all current parameter types:
 In the terms of commands, an overload is a set of parameters that a command can take. An overload is defined by an array of `Parameter` objects. Here is how a simple overload class looks:
 
 ```php
-$overload = new \libcommand\Overload(
+$overload = new libcommand\Overload(
     // An internal name used to track the overload
     name: "test",
     // A list of parameters
