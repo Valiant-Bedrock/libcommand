@@ -22,3 +22,6 @@ jobs:
       # PHPStan
       - name: Run PHPStan
         run: ./vendor/bin/phpstan analyze
+      # Code style checks
+      - name: Analyze code style
+        run: ./vendor/bin/php-cs-fixer fix --dry-run --diff
