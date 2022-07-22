@@ -2,7 +2,7 @@
   "name": "valiant-bedrock/libcommand",
   "description": "A PocketMine-MP library for registering commands with proper overloads",
   "type": "library",
-  "version": "0.6.0",
+  "version": "0.5.0",
   "license": "MIT",
   "autoload": {
     "psr-4": {
