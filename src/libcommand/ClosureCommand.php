@@ -31,8 +31,8 @@ use pocketmine\Server;
  *     fallbackPrefix: "simple_commands",
  *     command: new ClosureCommand(
  *         name: "example",
- *         onExecute: function (CommandSender $sender, array $arguments): void {
- *             $sender->sendMessage("Hello world!");
+ *         onExecute: function (CommandSender $sender, array $arguments): bool|string {
+ *             return "Hello world!";
  *         },
  *         description: "An example command",
  *         usage: "/example"
