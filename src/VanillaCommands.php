@@ -120,7 +120,7 @@ final class VanillaCommands {
 			new Overload("int", [new IntParameter("difficulty")])
 		]);
 		self::register("dumpmemory", [
-			new Overload("default", [new FilepathParameter("path"), true])
+			new Overload("default", [new FilepathParameter("path", true)])
 		]);
 		self::register("effect", [
 			new Overload("add_enum", [

@@ -2,10 +2,11 @@
   "name": "valiant-bedrock/libcommand",
   "description": "A PocketMine-MP library for registering commands with proper overloads",
   "type": "library",
-  "version": "0.4.2",
+  "version": "0.5.0",
+  "license": "MIT",
   "autoload": {
     "psr-4": {
-      "libcommand\\": "src/libcommand"
+      "libcommand\\": "src/"
     }
   },
   "require": {
@@ -18,17 +19,11 @@
   "scripts": {
     "analyze": "./vendor/bin/phpstan analyze"
   },
-  "license": "proprietary",
   "authors": [
     {
       "name": "sylvrs",
       "email": "personal@matthewjordan.xyz"
     }
   ],
-  "minimum-stability": "dev",
-  "repositories": [
-    { "type": "vcs", "url": "git@github.com:NetherGamesMC/PocketMine-MP.git" },
-    { "type": "vcs", "url": "git@github.com:NetherGamesMC/BedrockProtocol.git" },
-    { "type": "vcs", "url": "git@github.com:NetherGamesMC/BedrockData.git" }
-  ]
+  "minimum-stability": "dev"
 }

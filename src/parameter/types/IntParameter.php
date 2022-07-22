@@ -18,36 +18,34 @@ declare(strict_types=1);
 
 namespace  libcommand\parameter\types;
 
-use  libcommand\parameter\Parameter;
+use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
-use pocketmine\player\Player;
-use pocketmine\Server;
 use pocketmine\utils\AssumptionFailedError;
-use function is_string;
+use function intval;
+use function is_numeric;
 
-/**
- * TODO: This only supports players and not targets like @a, @e, @p, @r, etc.
- */
-class TargetParameter extends Parameter {
+class IntParameter extends Parameter {
 
 	/**
 	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return Player
+	 * @return int
 	 */
-	public function parse(CommandSender $sender, array &$input): Player {
-		return Server::getInstance()->getPlayerExact(array_shift($input) ?? throw new AssumptionFailedError("Value expected")) ?? throw new AssumptionFailedError("Player not found");
+	public function parse(CommandSender $sender, array &$input): int {
+		return intval(array_shift($input) ?? throw new AssumptionFailedError("Expected a value"));
 	}
 
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return bool
+	 */
 	public function validate(CommandSender $sender, array &$input): bool {
-		$value = array_shift($input);
-		return is_string($value) && Server::getInstance()->getPlayerExact($value) instanceof Player;
+		return is_numeric(array_shift($input));
 	}
 
 	public function getType(): int {
-		return AvailableCommandsPacket::ARG_TYPE_TARGET;
+		return AvailableCommandsPacket::ARG_TYPE_INT;
 	}
-
-
 }

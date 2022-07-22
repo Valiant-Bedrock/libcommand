@@ -18,34 +18,21 @@ declare(strict_types=1);
 
 namespace  libcommand\parameter\types;
 
-use  libcommand\parameter\Parameter;
+use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
-use pocketmine\utils\AssumptionFailedError;
-use function intval;
-use function is_numeric;
 
-class IntParameter extends Parameter {
+class RawTextParameter extends Parameter {
 
-	/**
-	 * @param CommandSender $sender
-	 * @param array<string> $input
-	 * @return int
-	 */
-	public function parse(CommandSender $sender, array &$input): int {
-		return intval(array_shift($input) ?? throw new AssumptionFailedError("Expected a value"));
+	public function parse(CommandSender $sender, array &$input): string {
+		return implode(" ", array_splice($input, 0));
 	}
 
-	/**
-	 * @param CommandSender $sender
-	 * @param array<string> $input
-	 * @return bool
-	 */
 	public function validate(CommandSender $sender, array &$input): bool {
-		return is_numeric(array_shift($input));
+		return count(array_splice($input, 0)) > 0;
 	}
 
 	public function getType(): int {
-		return AvailableCommandsPacket::ARG_TYPE_INT;
+		return AvailableCommandsPacket::ARG_TYPE_RAWTEXT;
 	}
 }

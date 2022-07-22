@@ -18,11 +18,10 @@ declare(strict_types=1);
 
 namespace  libcommand\parameter\types;
 
-use  libcommand\parameter\Parameter;
+use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\utils\AssumptionFailedError;
-use function assert;
 use function floatval;
 use function is_numeric;
 

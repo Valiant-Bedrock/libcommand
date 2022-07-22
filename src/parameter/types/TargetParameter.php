@@ -18,21 +18,36 @@ declare(strict_types=1);
 
 namespace  libcommand\parameter\types;
 
-use  libcommand\parameter\Parameter;
+use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+use pocketmine\player\Player;
+use pocketmine\Server;
+use pocketmine\utils\AssumptionFailedError;
+use function is_string;
 
-class RawTextParameter extends Parameter {
+/**
+ * TODO: This only supports players and not targets like @a, @e, @p, @r, etc.
+ */
+class TargetParameter extends Parameter {
 
-	public function parse(CommandSender $sender, array &$input): string {
-		return implode(" ", array_splice($input, 0));
+	/**
+	 * @param CommandSender $sender
+	 * @param array<string> $input
+	 * @return Player
+	 */
+	public function parse(CommandSender $sender, array &$input): Player {
+		return Server::getInstance()->getPlayerExact(array_shift($input) ?? throw new AssumptionFailedError("Value expected")) ?? throw new AssumptionFailedError("Player not found");
 	}
 
 	public function validate(CommandSender $sender, array &$input): bool {
-		return count(array_splice($input, 0)) > 0;
+		$value = array_shift($input);
+		return is_string($value) && Server::getInstance()->getPlayerExact($value) instanceof Player;
 	}
 
 	public function getType(): int {
-		return AvailableCommandsPacket::ARG_TYPE_RAWTEXT;
+		return AvailableCommandsPacket::ARG_TYPE_TARGET;
 	}
+
+
 }

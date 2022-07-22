@@ -87,7 +87,7 @@ Below is a simple example on how to create and register commands.
 #### Command Class
 
 ```php
-class SimpleCommand extends \libcommand\Command {
+class SimpleCommand extends libcommand\Command {
     public function __construct() {
         parent::__construct(
             name: "simple",
@@ -95,7 +95,7 @@ class SimpleCommand extends \libcommand\Command {
             usageMessage: "Usage: /simple <test_int> <test_raw>",
             aliases: ["s"],
             overloads: [
-                new \libcommand\Overload(name: "default", parameters: [
+                new libcommand\Overload(name: "default", parameters: [
                     new \libcommand\IntParameter(name: "test_int", description: "Test integer parameter", optional: false),
                     new \libcommand\RawTextParameter(name: "test_raw", description: "Test raw text parameter", optional: true)
                 ])
@@ -115,13 +115,14 @@ class SimpleCommand extends \libcommand\Command {
 }
 ```
 #### Registration
+
 ```php
 class SimplePlugin extends \pocketmine\plugin\PluginBase {
 
     protected function onEnable(): void {
     
         // Registering `LibCommandBase` allows for client-sided rendering to be done
-        \libcommand\LibCommandBase::register(plugin: $this);
+        libcommand\LibCommandBase::register(plugin: $this);
         $this->getServer()->getCommandMap()->register(
             fallbackPrefix: $this->getName(),
             command: new SimpleCommand()
