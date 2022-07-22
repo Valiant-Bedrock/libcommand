@@ -134,6 +134,40 @@ class SimplePlugin extends \pocketmine\plugin\PluginBase {
 }
 ```
 
+### `ClosureCommand`
+If you would like to create a command without using a separate class, the `ClosureCommand` class can be used.
+
+This foregoes the need for a separate class and allows you to use a closure to define the command logic.
+
+A simple example of a closure command would look something like:
+
+```php
+\pocketmine\Server::getInstance()->getCommandMap()->register(
+    fallbackPrefix: "examples",
+    command: new \libcommand\ClosureCommand(
+        name: "add",
+        onExecute: function (\pocketmine\command\CommandSender $sender, array $arguments) : bool|string {
+            // Null-coalescing operator is used to keep PHPStan happy, but won't actually occur
+            $first = $arguments["first"] ?? throw new AssumptionFailedError("First argument is required");
+            $second = $arguments["second"] ?? throw new AssumptionFailedError("Second argument is required");
+            return "Result of $first + $second: " . ($first + $second);
+        },
+        description: "Add two numbers together",
+        usageMessage: "/add <first> <second>",
+        overloads: [
+            new \libcommand\Overload(
+                name: "default",
+                parameters: [
+                    new \libcommand\parameter\types\IntParameter(name: "first"),
+                    new \libcommand\parameter\types\IntParameter(name: "second")
+                ]
+            )
+        ]
+    )
+);
+// `/add 1 2` will send a message with the following message: "Result of 1 + 2: 3"
+```
+
 ### Vanilla Command Rendering
 While not supported by default, `libcommand\VanillaCommandPatcher::register(PluginBase $plugin)` can be used to patch the default vanilla commands and render them client-side.
 
