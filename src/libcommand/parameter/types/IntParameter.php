@@ -22,24 +22,21 @@ use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\utils\AssumptionFailedError;
+use function array_shift;
 use function intval;
 use function is_numeric;
 
 class IntParameter extends Parameter {
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return int
 	 */
 	public function parse(CommandSender $sender, array &$input): int {
 		return intval(array_shift($input) ?? throw new AssumptionFailedError("Expected a value"));
 	}
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return bool
 	 */
 	public function validate(CommandSender $sender, array &$input): bool {
 		return is_numeric(array_shift($input));

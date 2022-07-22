@@ -22,7 +22,9 @@ use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+use function array_splice;
 use function count;
+use function floatval;
 
 /**
  * TODO: DO NOT USE YET! This parameter can not yet parse offsets.
@@ -30,9 +32,7 @@ use function count;
 class Vector3Parameter extends Parameter {
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return Vector3
 	 */
 	public function parse(CommandSender $sender, array &$input): Vector3 {
 		[$x, $y, $z] = array_splice($input, 0, 3);

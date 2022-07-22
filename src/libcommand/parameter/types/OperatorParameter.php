@@ -22,6 +22,8 @@ use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\utils\AssumptionFailedError;
+use function array_shift;
+use function is_string;
 
 class OperatorParameter extends Parameter {
 

@@ -22,11 +22,12 @@ use InvalidArgumentException;
 use libcommand\parameter\Parameter;
 use libcommand\parameter\types\RawTextParameter;
 use pocketmine\command\CommandSender;
+use function array_filter;
+use function count;
 
 class Overload {
 
 	/**
-	 * @param string $name
 	 * @param array<Parameter> $parameters
 	 */
 	public function __construct(protected string $name, protected array $parameters) {
@@ -65,9 +66,7 @@ class Overload {
 	/**
 	 * Attempts to validate the arguments provided by the sender to find a match.
 	 *
-	 * @param CommandSender $sender
 	 * @param array<string> $args
-	 * @return bool
 	 */
 	public function validate(CommandSender $sender, array $args): bool {
 		// If there are less args than required parameters, we can assume that this overload is not a match
@@ -86,7 +85,6 @@ class Overload {
 	/**
 	 * Parses the arguments and maps them to a map of values
 	 *
-	 * @param CommandSender $sender
 	 * @param array<string> $args
 	 * @return array<string, mixed>
 	 */
@@ -101,6 +99,5 @@ class Overload {
 		}
 		return $output;
 	}
-
 
 }

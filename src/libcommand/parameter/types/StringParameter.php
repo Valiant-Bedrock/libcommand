@@ -22,22 +22,19 @@ use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\utils\AssumptionFailedError;
+use function array_shift;
 
 class StringParameter extends Parameter {
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return string
 	 */
 	public function parse(CommandSender $sender, array &$input): string {
 		return array_shift($input) ?? throw new AssumptionFailedError("No more input to parse");
 	}
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return bool
 	 */
 	public function validate(CommandSender $sender, array &$input): bool {
 		return array_shift($input) !== null;

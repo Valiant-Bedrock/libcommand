@@ -21,22 +21,21 @@ namespace libcommand\parameter\types\enums;
 use libcommand\parameter\types\AbstractEnumParameter;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\AssumptionFailedError;
+use function array_shift;
+use function in_array;
+use function is_string;
 
 class EnumParameter extends AbstractEnumParameter {
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return string
 	 */
 	public function parse(CommandSender $sender, array &$input): string {
 		return array_shift($input) ?? throw new AssumptionFailedError("Value expected");
 	}
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return bool
 	 */
 	public function validate(CommandSender $sender, array &$input): bool {
 		$value = array_shift($input);

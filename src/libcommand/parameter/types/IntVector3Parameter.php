@@ -22,13 +22,14 @@ use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+use function array_splice;
+use function count;
+use function intval;
 
 class IntVector3Parameter extends Parameter {
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return Vector3
 	 */
 	public function parse(CommandSender $sender, array &$input): Vector3 {
 		[$x, $y, $z] = array_splice($input, 0, 3);

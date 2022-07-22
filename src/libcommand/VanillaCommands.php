@@ -36,6 +36,8 @@ use libcommand\parameter\types\ValueParameter;
 use libcommand\parameter\types\Vector3Parameter;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 use pocketmine\utils\RegistryTrait;
+use function array_map;
+use function str_replace;
 
 /**
  * @method static self BAN()
@@ -353,20 +355,16 @@ final class VanillaCommands {
 	}
 
 	/**
-	 * @param string $name
 	 * @param array<Overload> $overloads
-	 * @return void
 	 */
 	public static function register(string $name, array $overloads = []): void {
 		self::_registryRegister(str_replace("-", "_", $name), new VanillaCommands($name, $overloads));
 	}
 
-
 	/** @var array<array<CommandParameter>> */
 	protected array $mappedOverloads;
 
 	/**
-	 * @param string $name
 	 * @param array<Overload> $overloads
 	 */
 	public function __construct(protected string $name, protected array $overloads = []) {

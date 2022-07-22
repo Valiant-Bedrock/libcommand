@@ -26,6 +26,9 @@ use pocketmine\network\mcpe\protocol\types\command\CommandData;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
+use function array_filter;
+use function array_key_first;
+use function array_map;
 
 final class LibCommandBase {
 
@@ -63,7 +66,6 @@ final class LibCommandBase {
 	/**
 	 * Maps a command's overloads to a PocketMine-MP compatible array of CommandParameters.
 	 *
-	 * @param Command $command
 	 * @return array<array<CommandParameter>>
 	 */
 	private static function mapOverloadsToPacket(Command $command): array {

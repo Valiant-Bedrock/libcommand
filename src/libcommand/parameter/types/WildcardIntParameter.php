@@ -20,7 +20,6 @@ namespace libcommand\parameter\types;
 
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 
-
 class WildcardIntParameter extends IntParameter {
 
 	public function getType(): int {

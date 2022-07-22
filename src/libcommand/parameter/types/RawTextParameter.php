@@ -21,6 +21,9 @@ namespace  libcommand\parameter\types;
 use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+use function array_splice;
+use function count;
+use function implode;
 
 class RawTextParameter extends Parameter {
 

@@ -24,13 +24,13 @@ use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\Server;
 use pocketmine\utils\AssumptionFailedError;
+use function array_shift;
+use function is_string;
 
 class CommandParameter extends Parameter {
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return Command
 	 */
 	public function parse(CommandSender $sender, array &$input): Command {
 		return Server::getInstance()->getCommandMap()->getCommand(
@@ -39,9 +39,7 @@ class CommandParameter extends Parameter {
 	}
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return bool
 	 */
 	public function validate(CommandSender $sender, array &$input): bool {
 		$name = array_shift($input);

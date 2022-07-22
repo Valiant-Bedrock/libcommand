@@ -22,17 +22,15 @@ use pocketmine\command\CommandSender;
 use pocketmine\lang\KnownTranslationFactory;
 use pocketmine\lang\Translatable;
 use pocketmine\utils\TextFormat;
+use function count;
+use function is_string;
 
 abstract class Command extends \pocketmine\command\Command {
 
 	/**
-	 * @param string $name
-	 * @param Translatable|string $description
 	 * @param Translatable|string|null $usageMessage
 	 * @param array<string> $aliases
 	 * @param array<Overload> $overloads
-	 * @param string|null $permission
-	 * @param string|null $permissionMessage
 	 */
 	public function __construct(string $name, Translatable|string $description = "", Translatable|string|null $usageMessage = null, array $aliases = [], protected array $overloads = [], ?string $permission = null, ?string $permissionMessage = null) {
 		parent::__construct($name, $description, $usageMessage, $aliases);
@@ -61,10 +59,7 @@ abstract class Command extends \pocketmine\command\Command {
 	}
 
 	/**
-	 * @param CommandSender $sender
-	 * @param string $commandLabel
 	 * @param array<string> $args
-	 * @return bool
 	 */
 	public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
 		$arguments = [];
@@ -93,16 +88,12 @@ abstract class Command extends \pocketmine\command\Command {
 	}
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string, mixed> $arguments
-	 * @return bool|string
 	 */
 	public abstract function onExecute(CommandSender $sender, array $arguments): bool|string;
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $args
-	 * @return Overload|null
 	 */
 	protected function findOverload(CommandSender $sender, array $args): ?Overload {
 		foreach ($this->overloads as $overload) {

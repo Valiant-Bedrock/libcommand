@@ -37,31 +37,22 @@ abstract class Parameter {
 	/**
 	 * Parses the input into a usable format
 	 *
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return mixed
 	 */
 	public abstract function parse(CommandSender $sender, array &$input): mixed;
 
 	/**
 	 * Validates the input argument(s)
 	 *
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return bool
 	 */
 	public abstract function validate(CommandSender $sender, array &$input): bool;
 
 	/**
 	 * Returns the parameter type from {@link AvailableCommandsPacket}
-	 *
-	 * @return int
 	 */
 	public abstract function getType(): int;
 
-	/**
-	 * @return CommandParameter
-	 */
 	public function encode(): CommandParameter {
 		return CommandParameter::standard(
 			name: $this->name,

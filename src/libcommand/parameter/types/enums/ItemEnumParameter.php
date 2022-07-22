@@ -24,6 +24,9 @@ use pocketmine\command\CommandSender;
 use pocketmine\item\Item;
 use pocketmine\item\StringToItemParser;
 use pocketmine\utils\AssumptionFailedError;
+use function array_shift;
+use function is_string;
+use function strtoupper;
 
 class ItemEnumParameter extends AbstractEnumParameter {
 
@@ -32,18 +35,14 @@ class ItemEnumParameter extends AbstractEnumParameter {
 	}
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return Item
 	 */
 	public function parse(CommandSender $sender, array &$input): Item {
 		return $this->parseFromString(array_shift($input) ?? throw new AssumptionFailedError("Expected value")) ?? throw new AssumptionFailedError("Unable to locate block");
 	}
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return bool
 	 */
 	public function validate(CommandSender $sender, array &$input): bool {
 		$value = array_shift($input);

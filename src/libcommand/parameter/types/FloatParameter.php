@@ -22,24 +22,21 @@ use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\utils\AssumptionFailedError;
+use function array_shift;
 use function floatval;
 use function is_numeric;
 
 class FloatParameter extends Parameter {
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return float
 	 */
 	public function parse(CommandSender $sender, array &$input): float {
 		return floatval(array_shift($input) ?? throw new AssumptionFailedError("Expected value"));
 	}
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return bool
 	 */
 	public function validate(CommandSender $sender, array &$input): bool {
 		$value = array_shift($input);

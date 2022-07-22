@@ -22,6 +22,10 @@ use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\types\command\CommandEnum;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
+use function array_keys;
+use function array_shift;
+use function is_string;
+use function strtolower;
 
 class BoolParameter extends Parameter {
 
@@ -35,9 +39,7 @@ class BoolParameter extends Parameter {
 	}
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return bool
 	 */
 	public function validate(CommandSender $sender, array &$input): bool {
 		$name = array_shift($input);

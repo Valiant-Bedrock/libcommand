@@ -28,9 +28,7 @@ use pocketmine\utils\TextFormat;
 abstract class ConsoleCommand extends Command {
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string, mixed> $arguments
-	 * @return string|bool
 	 */
 	final public function onExecute(CommandSender $sender, array $arguments): string|bool {
 		if (!$sender instanceof ConsoleCommandSender) {
@@ -42,9 +40,7 @@ abstract class ConsoleCommand extends Command {
 	/**
 	 * The method to execute when the command is executed by the console.
 	 *
-	 * @param ConsoleCommandSender $sender
 	 * @param array<string, mixed> $arguments
-	 * @return string|bool
 	 */
 	public abstract function onConsoleExecute(ConsoleCommandSender $sender, array $arguments): string|bool;
 }

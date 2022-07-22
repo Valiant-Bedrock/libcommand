@@ -24,6 +24,7 @@ use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use pocketmine\utils\AssumptionFailedError;
+use function array_shift;
 use function is_string;
 
 /**
@@ -32,9 +33,7 @@ use function is_string;
 class TargetParameter extends Parameter {
 
 	/**
-	 * @param CommandSender $sender
 	 * @param array<string> $input
-	 * @return Player
 	 */
 	public function parse(CommandSender $sender, array &$input): Player {
 		return Server::getInstance()->getPlayerExact(array_shift($input) ?? throw new AssumptionFailedError("Value expected")) ?? throw new AssumptionFailedError("Player not found");
@@ -48,6 +47,5 @@ class TargetParameter extends Parameter {
 	public function getType(): int {
 		return AvailableCommandsPacket::ARG_TYPE_TARGET;
 	}
-
 
 }
