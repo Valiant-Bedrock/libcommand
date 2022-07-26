@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "54785e19c25e131219ce1ae26b5b48b3",
+    "content-hash": "16e10babff50155d7408ae3343770c7d",
     "packages": [],
     "packages-dev": [
         {
@@ -568,16 +568,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "dev-master",
+            "version": "v3.9.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "953b8380de208061f0d7d2aa4ec4dbc775e0a577"
+                "reference": "4465d70ba776806857a1ac2a6f877e582445ff36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/953b8380de208061f0d7d2aa4ec4dbc775e0a577",
-                "reference": "953b8380de208061f0d7d2aa4ec4dbc775e0a577",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/4465d70ba776806857a1ac2a6f877e582445ff36",
+                "reference": "4465d70ba776806857a1ac2a6f877e582445ff36",
                 "shasum": ""
             },
             "require": {
@@ -619,7 +619,6 @@
                 "ext-dom": "For handling output formats in XML",
                 "ext-mbstring": "For handling non-UTF8 characters."
             },
-            "default-branch": true,
             "bin": [
                 "php-cs-fixer"
             ],
@@ -646,7 +645,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues",
-                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/master"
+                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.9.5"
             },
             "funding": [
                 {
@@ -654,7 +653,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-22T15:43:22+00:00"
+            "time": "2022-07-22T08:43:51+00:00"
         },
         {
             "name": "netresearch/jsonmapper",
@@ -1302,12 +1301,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pmmp/PocketMine-MP.git",
-                "reference": "e10a624444248956e1c01ab49506ce152cc29532"
+                "reference": "5d9f78303726a6ba58cdda8231976f57a54a73c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pmmp/PocketMine-MP/zipball/e10a624444248956e1c01ab49506ce152cc29532",
-                "reference": "e10a624444248956e1c01ab49506ce152cc29532",
+                "url": "https://api.github.com/repos/pmmp/PocketMine-MP/zipball/5d9f78303726a6ba58cdda8231976f57a54a73c4",
+                "reference": "5d9f78303726a6ba58cdda8231976f57a54a73c4",
                 "shasum": ""
             },
             "require": {
@@ -1394,7 +1393,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-22T18:35:10+00:00"
+            "time": "2022-07-24T20:07:35+00:00"
         },
         {
             "name": "pocketmine/raklib",
