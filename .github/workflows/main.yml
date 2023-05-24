@@ -10,7 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Download PHP
-        run: wget "https://jenkins.pmmp.io/job/PHP-8.0-Aggregate/lastSuccessfulBuild/artifact/${{ env.PHP_ARTIFACT_NAME }}"
+        run: wget "https://github.com/NetherGamesMC/php-build-scripts/releases/download/8.2/Linux.zip"
+      - name: Unzip PHP
+        run: unzip Linux.zip -d ./
       - name: Untar PHP
         run: tar -xzvf ${{ env.PHP_ARTIFACT_NAME }} -C ./
       - name: Install Composer
