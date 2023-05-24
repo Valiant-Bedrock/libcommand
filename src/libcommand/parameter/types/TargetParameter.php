@@ -35,8 +35,8 @@ class TargetParameter extends Parameter {
 	/**
 	 * @param array<string> $input
 	 */
-	public function parse(CommandSender $sender, array &$input): Player {
-		return Server::getInstance()->getPlayerExact(array_shift($input) ?? throw new AssumptionFailedError("Value expected")) ?? throw new AssumptionFailedError("Player not found");
+	public function parse(CommandSender $sender, array &$input): ?Player {
+		return Server::getInstance()->getPlayerExact(array_shift($input) ?? throw new AssumptionFailedError("Value expected"));
 	}
 
 	public function validate(CommandSender $sender, array &$input): bool {
