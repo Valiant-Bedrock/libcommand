@@ -1,7 +1,7 @@
 name: Continuous Integration
 on: [push]
 env:
-  PHP_ARTIFACT_NAME: PHP-8.0-Linux-x86_64.tar.gz
+  PHP_ARTIFACT_NAME: PHP_Linux-x86_64.tar.gz
   PHP_PATH: ./bin/php7/bin
   PHP_BINARY_PATH: ./bin/php7/bin/php
 jobs:
