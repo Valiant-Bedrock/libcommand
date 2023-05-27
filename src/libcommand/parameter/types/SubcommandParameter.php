@@ -51,12 +51,10 @@ class SubcommandParameter extends Parameter {
 	}
 
 	public function encode(): CommandParameter {
-		$parameter = CommandParameter::standard(
+		return CommandParameter::enum(
 			name: $this->name,
-			type: AvailableCommandsPacket::ARG_FLAG_ENUM | AvailableCommandsPacket::ARG_TYPE_RAWTEXT,
-			optional: false
+			enum: new CommandEnum(enumName: "{$this->name}_values", enumValues: [$this->name]),
+			flags: 0,
 		);
-		$parameter->enum = new CommandEnum(enumName: "{$this->name}_values", enumValues: [$this->name]);
-		return $parameter;
 	}
 }
