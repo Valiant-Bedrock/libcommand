@@ -1,6 +1,9 @@
 name: Continuous Integration
 on: [push]
 env:
+  # PHP environment variables used for downloading, extraction, and running PHP
+  PHP_DOWNLOAD_PATH: https://github.com/NetherGamesMC/php-build-scripts/releases/download/8.2/Linux.zip
+  PHP_DOWNLOAD_NAME: Linux.zip
   PHP_ARTIFACT_NAME: PHP_Linux-x86_64.tar.gz
   PHP_PATH: ./bin/php7/bin
   PHP_BINARY_PATH: ./bin/php7/bin/php
@@ -10,9 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Download PHP
-        run: wget "https://github.com/NetherGamesMC/php-build-scripts/releases/download/8.2/Linux.zip"
+        run: wget ${{ env.PHP_DOWNLOAD_PATH }}
       - name: Unzip PHP
-        run: unzip Linux.zip -d ./
+        run: unzip ${{ env.PHP_DOWNLOAD_NAME }} -d ./
       - name: Untar PHP
         run: tar -xzvf ${{ env.PHP_ARTIFACT_NAME }} -C ./
       - name: Install Composer
@@ -23,7 +26,7 @@ jobs:
         run: ${{ env.PHP_BINARY_PATH }} composer.phar install --prefer-dist --no-interaction
       # PHPStan
       - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyze
+        run: ${{ env.PHP_BINARY_PATH }} ./vendor/bin/phpstan.phar analyze
       # Code style checks
       - name: Analyze code style
-        run: ./vendor/bin/php-cs-fixer fix --dry-run --diff
+        run: ${{ env.PHP_BINARY_PATH }} ./vendor/bin/php-cs-fixer fix --dry-run --diff
