@@ -30,11 +30,11 @@ abstract class ConsoleCommand extends Command {
 	/**
 	 * @param array<string, mixed> $arguments
 	 */
-	final public function onExecute(CommandSender $sender, array $arguments): string|bool {
+	final public function onExecute(CommandSender $sender, string $overload, array $arguments): string|bool {
 		if (!$sender instanceof ConsoleCommandSender) {
 			return TextFormat::RED . "This command can only be used by the console.";
 		}
-		return $this->onConsoleExecute($sender, $arguments);
+		return $this->onConsoleExecute($sender, $overload, $arguments);
 	}
 
 	/**
@@ -42,5 +42,5 @@ abstract class ConsoleCommand extends Command {
 	 *
 	 * @param array<string, mixed> $arguments
 	 */
-	public abstract function onConsoleExecute(ConsoleCommandSender $sender, array $arguments): string|bool;
+	public abstract function onConsoleExecute(ConsoleCommandSender $sender, string $overload, array $arguments): string|bool;
 }

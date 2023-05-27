@@ -72,15 +72,15 @@ $overload = new libcommand\Overload(
 Finally, to tie these features together, it uses the `Command` class. This class is meant to be extended to create new commands. The class extends `\pocketmine\command\Command` and accepts
 one more parameter, `$overloads`, which is an array of `Overload` objects, though you can use the methods `addOverload(Overload $overload): void` and `addOverloads(Overload ...$overloads)` to add them separately from the constructor.
 
-#### `onExecute(CommandSender $sender, array<Parameter> $arguments): bool|string`
+#### `onExecute(CommandSender $sender, string $overload, array<Parameter> $arguments): bool|string`
 This method is the heart of the command and runs the actual logic of the command. The command will look for a compatible overload and then pass it to `$arguments`. With `$arguments`, you can
 access the parameter values through their name (e.g., `new StringParameter("name")` would be accessed through `$arguments["name"]`). If the return type from this method is `string`, the returned value will be sent to the command sender.
 
 #### Command Sender Access
 To limit the access to the command, you can use the `ConsoleCommand` class or `PlayerCommand` class. This will verify the command sender before executing the command.
 Each of these classes have their own special methods that are called after the sender is verified:
-- `PlayerCommand`: `onPlayerExecute(Player $player, array $arguments): bool|string`
-- `ConsoleCommand`: `onConsoleExecute(ConsoleCommandSender $sender, array $arguments): bool|string`
+- `PlayerCommand`: `onPlayerExecute(Player $player, string $overload, array $arguments): bool|string`
+- `ConsoleCommand`: `onConsoleExecute(ConsoleCommandSender $sender, string $overload, array $arguments): bool|string`
 
 NOTE: These methods do replace the `onExecute()` method.
 
@@ -108,7 +108,7 @@ class SimpleCommand extends libcommand\Command {
             // permissionMessage: "Ouch! You don't have permission to use SimpleCommand!"
         );
     }
-    public function onExecute(\pocketmine\command\CommandSender $sender, array $arguments) : bool|string {
+    public function onExecute(\pocketmine\command\CommandSender $sender, string $overload, array $arguments) : bool|string {
         $int = $arguments["test_int"];
         $raw = $arguments["test_raw"] ?? "fallback raw text";
         // Returning a string will send the sender the returned message
@@ -146,7 +146,7 @@ A simple example of a closure command would look something like:
     fallbackPrefix: "examples",
     command: new \libcommand\ClosureCommand(
         name: "add",
-        onExecute: function (\pocketmine\command\CommandSender $sender, array $arguments) : bool|string {
+        onExecute: function (\pocketmine\command\CommandSender $sender, string $overload, array $arguments) : bool|string {
             // Null-coalescing operator is used to keep PHPStan happy, but won't actually occur
             $first = $arguments["first"] ?? throw new AssumptionFailedError("First argument is required");
             $second = $arguments["second"] ?? throw new AssumptionFailedError("Second argument is required");

@@ -62,14 +62,11 @@ abstract class Command extends \pocketmine\command\Command {
 	 * @param array<string> $args
 	 */
 	public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
-		$arguments = [];
-		if (count($this->overloads) > 0) {
-			$overload = $this->findOverload($sender, $args);
-			if ($overload === null) {
-				$sender->sendMessage(TextFormat::RED . $sender->getLanguage()->translate(KnownTranslationFactory::commands_generic_usage($this->getUsage())));
-				return false;
-			}
-			$arguments = $overload->map($sender, $args);
+		/** @var ?Overload $overload */
+		$overload = count($this->overloads) > 0 ? $this->findOverload($sender, $args) : null;
+		if ($overload === null) {
+			$sender->sendMessage(TextFormat::RED . $sender->getLanguage()->translate(KnownTranslationFactory::commands_generic_usage($this->getUsage())));
+			return false;
 		}
 
 		// Ensure that the sender has permission to use the command before execution
@@ -78,7 +75,8 @@ abstract class Command extends \pocketmine\command\Command {
 			return false;
 		}
 
-		$value = $this->onExecute($sender, $arguments);
+		$arguments = $overload->map($sender, $args);
+		$value = $this->onExecute($sender, $overload->getName(),$arguments);
 		// If the return value is a string, we can assume they want to send the sender a message
 		if (is_string($value)) {
 			$sender->sendMessage($value);
@@ -90,7 +88,7 @@ abstract class Command extends \pocketmine\command\Command {
 	/**
 	 * @param array<string, mixed> $arguments
 	 */
-	public abstract function onExecute(CommandSender $sender, array $arguments): bool|string;
+	public abstract function onExecute(CommandSender $sender, string $overload, array $arguments): bool|string;
 
 	/**
 	 * @param array<string> $args

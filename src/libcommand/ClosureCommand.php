@@ -43,7 +43,7 @@ use pocketmine\Server;
 final class ClosureCommand extends Command{
 
 	/**
-	 * @param Closure(CommandSender, array<string, mixed>): (bool|string) $onExecute
+	 * @param Closure(CommandSender, string, array<string, mixed>): (bool|string) $onExecute
 	 * @param Translatable|string|null $usageMessage
 	 * @param array<string> $aliases
 	 * @param array<Overload> $overloads
@@ -61,7 +61,7 @@ final class ClosureCommand extends Command{
 		parent::__construct($name, $description, $usageMessage, $aliases, $overloads, $permission, $permissionMessage);
 	}
 
-	public function onExecute(CommandSender $sender, array $arguments): bool|string {
-		return ($this->onExecute)($sender, $arguments);
+	public function onExecute(CommandSender $sender, string $overload, array $arguments): bool|string {
+		return ($this->onExecute)($sender, $overload, $arguments);
 	}
 }

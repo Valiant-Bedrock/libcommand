@@ -27,11 +27,11 @@ use pocketmine\utils\TextFormat;
  */
 abstract class PlayerCommand extends Command {
 
-	final public function onExecute(CommandSender $sender, array $arguments): bool|string {
+	final public function onExecute(CommandSender $sender, string $overload, array $arguments): bool|string {
 		if (!$sender instanceof Player) {
 			return TextFormat::RED . "This command can only be used in-game.";
 		}
-		return $this->onPlayerExecute($sender, $arguments);
+		return $this->onPlayerExecute($sender, $overload, $arguments);
 	}
 
 	/**
@@ -39,5 +39,5 @@ abstract class PlayerCommand extends Command {
 	 *
 	 * @param array<string, mixed> $arguments
 	 */
-	public abstract function onPlayerExecute(Player $sender, array $arguments): bool|string;
+	public abstract function onPlayerExecute(Player $sender, string $overload, array $arguments): bool|string;
 }
