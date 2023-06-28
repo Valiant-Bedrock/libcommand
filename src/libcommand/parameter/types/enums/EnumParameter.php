@@ -22,7 +22,6 @@ use libcommand\parameter\types\AbstractEnumParameter;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\AssumptionFailedError;
 use function array_shift;
-use function in_array;
 use function is_string;
 
 class EnumParameter extends AbstractEnumParameter {
@@ -39,6 +38,14 @@ class EnumParameter extends AbstractEnumParameter {
 	 */
 	public function validate(CommandSender $sender, array &$input): bool {
 		$value = array_shift($input);
-		return is_string($value) && in_array($value, $this->enumValues, true);
+		if (!is_string($value)) {
+			return false;
+		}
+		foreach ($this->enumValues as $enumValue) {
+			if (strtolower($value) === strtolower($enumValue)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
