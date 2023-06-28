@@ -18,7 +18,8 @@
     "pocketmine/pocketmine-mp": "dev-stable"
   },
   "scripts": {
-    "analyze": "./vendor/bin/phpstan analyze"
+    "analyze": "./vendor/bin/phpstan analyze",
+    "run-cs-fixer": "./vendor/bin/php-cs-fixer fix --diff --ansi"
   },
   "authors": [
     {
