@@ -27,7 +27,7 @@ use function array_map;
 abstract class AbstractEnumParameter extends Parameter {
 
 	/**
-	 * @param array<int, mixed> $enumValues
+	 * @param list<string> $enumValues
 	 */
 	public function __construct(string $name, protected string $enumName, protected array $enumValues, bool $optional = false) {
 		parent::__construct($name, $optional);
