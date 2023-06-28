@@ -45,8 +45,7 @@ abstract class AbstractEnumParameter extends Parameter {
 	public function encode(): CommandParameter {
 		return CommandParameter::enum(
 			name: $this->name,
-			/** @phpstan-ignore-next-line */
-			enum: new CommandEnum(enumName: $this->enumName, enumValues: array_map(fn(mixed $value): string => (string) $value, $this->enumValues)),
+			enum: new CommandEnum(enumName: $this->enumName, enumValues: $this->enumValues),
 			flags: 0,
 			optional: $this->optional
 		);
