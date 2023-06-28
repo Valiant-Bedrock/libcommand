@@ -23,6 +23,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\utils\AssumptionFailedError;
 use function array_shift;
 use function is_string;
+use function strtolower;
 
 class EnumParameter extends AbstractEnumParameter {
 
