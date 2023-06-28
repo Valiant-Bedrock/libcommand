@@ -20,6 +20,7 @@ namespace libcommand\parameter\types;
 
 use libcommand\parameter\Parameter;
 use pocketmine\command\CommandSender;
+use pocketmine\command\utils\InvalidCommandSyntaxException;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\player\Player;
 use pocketmine\Server;
@@ -35,8 +36,9 @@ class TargetParameter extends Parameter {
 	/**
 	 * @param array<string> $input
 	 */
-	public function parse(CommandSender $sender, array &$input): ?Player {
-		return Server::getInstance()->getPlayerExact(array_shift($input) ?? throw new AssumptionFailedError("Value expected"));
+	public function parse(CommandSender $sender, array &$input): Player {
+		$username = array_shift($input) ?? throw new AssumptionFailedError("Value expected");
+		return Server::getInstance()->getPlayerExact($username) ?? throw new InvalidCommandSyntaxException("Player '$username' not found");
 	}
 
 	public function validate(CommandSender $sender, array &$input): bool {
