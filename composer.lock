@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fead34775ec86117c57c07fa5c0c5f26",
+    "content-hash": "091ff8ababf1babb496e9b54e14373ed",
     "packages": [],
     "packages-dev": [
         {
@@ -347,12 +347,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "4b68cf86b766ec429f4f68af648817cdfb360582"
+                "reference": "a77f4cc1734b23ffb7c0bb4578a0d3b568cf4adc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/4b68cf86b766ec429f4f68af648817cdfb360582",
-                "reference": "4b68cf86b766ec429f4f68af648817cdfb360582",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/a77f4cc1734b23ffb7c0bb4578a0d3b568cf4adc",
+                "reference": "a77f4cc1734b23ffb7c0bb4578a0d3b568cf4adc",
                 "shasum": ""
             },
             "require": {
@@ -416,7 +416,7 @@
                 "issues": "https://github.com/doctrine/annotations/issues",
                 "source": "https://github.com/doctrine/annotations/tree/2.0.x"
             },
-            "time": "2023-03-27T17:43:32+00:00"
+            "time": "2023-06-13T17:54:52+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -573,16 +573,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.17.0",
+            "version": "v3.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "3f0ed862f22386c55a767461ef5083bddceeed79"
+                "reference": "0e8249e0b15e2bc022fbbd1090ce29d071481e69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/3f0ed862f22386c55a767461ef5083bddceeed79",
-                "reference": "3f0ed862f22386c55a767461ef5083bddceeed79",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/0e8249e0b15e2bc022fbbd1090ce29d071481e69",
+                "reference": "0e8249e0b15e2bc022fbbd1090ce29d071481e69",
                 "shasum": ""
             },
             "require": {
@@ -657,7 +657,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.17.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.20.0"
             },
             "funding": [
                 {
@@ -665,58 +665,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-22T19:59:32+00:00"
-        },
-        {
-            "name": "netresearch/jsonmapper",
-            "version": "v4.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cweiske/jsonmapper.git",
-                "reference": "f60565f8c0566a31acf06884cdaa591867ecc956"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cweiske/jsonmapper/zipball/f60565f8c0566a31acf06884cdaa591867ecc956",
-                "reference": "f60565f8c0566a31acf06884cdaa591867ecc956",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-pcre": "*",
-                "ext-reflection": "*",
-                "ext-spl": "*",
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~7.5 || ~8.0 || ~9.0",
-                "squizlabs/php_codesniffer": "~3.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "JsonMapper": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "OSL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Christian Weiske",
-                    "email": "cweiske@cweiske.de",
-                    "homepage": "http://github.com/cweiske/jsonmapper/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Map nested JSON structures onto PHP classes",
-            "support": {
-                "email": "cweiske@cweiske.de",
-                "issues": "https://github.com/cweiske/jsonmapper/issues",
-                "source": "https://github.com/cweiske/jsonmapper/tree/v4.2.0"
-            },
-            "time": "2023-04-09T17:37:40+00:00"
+            "time": "2023-06-27T20:22:39+00:00"
         },
         {
             "name": "phpstan/phpstan",
@@ -724,12 +673,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "60f9a44b1eb9d6144524ba7f358768ee07cd1c73"
+                "reference": "94ff3e3b368a9cb65f07a56d1c83c49576685a81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/60f9a44b1eb9d6144524ba7f358768ee07cd1c73",
-                "reference": "60f9a44b1eb9d6144524ba7f358768ee07cd1c73",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/94ff3e3b368a9cb65f07a56d1c83c49576685a81",
+                "reference": "94ff3e3b368a9cb65f07a56d1c83c49576685a81",
                 "shasum": ""
             },
             "require": {
@@ -779,20 +728,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-27T08:06:17+00:00"
+            "time": "2023-06-28T11:47:57+00:00"
         },
         {
             "name": "pocketmine/bedrock-block-upgrade-schema",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pmmp/BedrockBlockUpgradeSchema.git",
-                "reference": "1c07ced86be7d185551082441b5a2b9b7fbd6b21"
+                "reference": "79bb3ad542ef19e828fdf1fa6adc54f1fa4b3bb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pmmp/BedrockBlockUpgradeSchema/zipball/1c07ced86be7d185551082441b5a2b9b7fbd6b21",
-                "reference": "1c07ced86be7d185551082441b5a2b9b7fbd6b21",
+                "url": "https://api.github.com/repos/pmmp/BedrockBlockUpgradeSchema/zipball/79bb3ad542ef19e828fdf1fa6adc54f1fa4b3bb5",
+                "reference": "79bb3ad542ef19e828fdf1fa6adc54f1fa4b3bb5",
                 "shasum": ""
             },
             "type": "library",
@@ -803,22 +752,22 @@
             "description": "Schemas describing how to upgrade saved block data in older Minecraft: Bedrock Edition world saves",
             "support": {
                 "issues": "https://github.com/pmmp/BedrockBlockUpgradeSchema/issues",
-                "source": "https://github.com/pmmp/BedrockBlockUpgradeSchema/tree/2.1.0"
+                "source": "https://github.com/pmmp/BedrockBlockUpgradeSchema/tree/2.2.0"
             },
-            "time": "2023-04-19T17:58:49+00:00"
+            "time": "2023-05-04T21:49:36+00:00"
         },
         {
             "name": "pocketmine/bedrock-data",
-            "version": "2.2.0+bedrock-1.19.80",
+            "version": "2.3.1+bedrock-1.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pmmp/BedrockData.git",
-                "reference": "33dd83601442b377af42ac91473278243cafd576"
+                "reference": "fb89ccdc039252462d8d068a769635e24151b7e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pmmp/BedrockData/zipball/33dd83601442b377af42ac91473278243cafd576",
-                "reference": "33dd83601442b377af42ac91473278243cafd576",
+                "url": "https://api.github.com/repos/pmmp/BedrockData/zipball/fb89ccdc039252462d8d068a769635e24151b7e2",
+                "reference": "fb89ccdc039252462d8d068a769635e24151b7e2",
                 "shasum": ""
             },
             "type": "library",
@@ -829,22 +778,22 @@
             "description": "Blobs of data generated from Minecraft: Bedrock Edition, used by PocketMine-MP",
             "support": {
                 "issues": "https://github.com/pmmp/BedrockData/issues",
-                "source": "https://github.com/pmmp/BedrockData/tree/bedrock-1.19.80"
+                "source": "https://github.com/pmmp/BedrockData/tree/2.3.1+bedrock-1.20.0"
             },
-            "time": "2023-04-26T20:00:35+00:00"
+            "time": "2023-06-13T16:42:09+00:00"
         },
         {
             "name": "pocketmine/bedrock-item-upgrade-schema",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pmmp/BedrockItemUpgradeSchema.git",
-                "reference": "dd804c3f2b1e8990434812627e62eb5bde9670a5"
+                "reference": "b16c59cfae08833f180dd82f88de7c1f43bc67c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pmmp/BedrockItemUpgradeSchema/zipball/dd804c3f2b1e8990434812627e62eb5bde9670a5",
-                "reference": "dd804c3f2b1e8990434812627e62eb5bde9670a5",
+                "url": "https://api.github.com/repos/pmmp/BedrockItemUpgradeSchema/zipball/b16c59cfae08833f180dd82f88de7c1f43bc67c9",
+                "reference": "b16c59cfae08833f180dd82f88de7c1f43bc67c9",
                 "shasum": ""
             },
             "type": "library",
@@ -855,22 +804,22 @@
             "description": "JSON schemas for upgrading items found in older Minecraft: Bedrock world saves",
             "support": {
                 "issues": "https://github.com/pmmp/BedrockItemUpgradeSchema/issues",
-                "source": "https://github.com/pmmp/BedrockItemUpgradeSchema/tree/1.2.0"
+                "source": "https://github.com/pmmp/BedrockItemUpgradeSchema/tree/1.3.0"
             },
-            "time": "2023-04-19T18:16:14+00:00"
+            "time": "2023-05-18T15:34:32+00:00"
         },
         {
             "name": "pocketmine/bedrock-protocol",
-            "version": "21.0.1+bedrock-1.19.80",
+            "version": "22.0.0+bedrock-1.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pmmp/BedrockProtocol.git",
-                "reference": "981ea2e76e207a25c1361df858c639feba5cf348"
+                "reference": "ceff28a0bd5d248f37fb97be3e836d536e37526e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pmmp/BedrockProtocol/zipball/981ea2e76e207a25c1361df858c639feba5cf348",
-                "reference": "981ea2e76e207a25c1361df858c639feba5cf348",
+                "url": "https://api.github.com/repos/pmmp/BedrockProtocol/zipball/ceff28a0bd5d248f37fb97be3e836d536e37526e",
+                "reference": "ceff28a0bd5d248f37fb97be3e836d536e37526e",
                 "shasum": ""
             },
             "require": {
@@ -902,9 +851,9 @@
             "description": "An implementation of the Minecraft: Bedrock Edition protocol in PHP",
             "support": {
                 "issues": "https://github.com/pmmp/BedrockProtocol/issues",
-                "source": "https://github.com/pmmp/BedrockProtocol/tree/21.0.1+bedrock-1.19.80"
+                "source": "https://github.com/pmmp/BedrockProtocol/tree/22.0.0+bedrock-1.20.0"
             },
-            "time": "2023-04-26T21:00:01+00:00"
+            "time": "2023-06-07T19:22:05+00:00"
         },
         {
             "name": "pocketmine/binaryutils",
@@ -1314,17 +1263,71 @@
             "time": "2023-04-10T11:31:20+00:00"
         },
         {
-            "name": "pocketmine/pocketmine-mp",
-            "version": "dev-stable",
+            "name": "pocketmine/netresearch-jsonmapper",
+            "version": "v4.2.999",
             "source": {
                 "type": "git",
-                "url": "https://github.com/pmmp/PocketMine-MP.git",
-                "reference": "57330a718683b4a9db8469403bd7a66b7951493a"
+                "url": "https://github.com/pmmp/netresearch-jsonmapper.git",
+                "reference": "f700806dec756ed825a8200dc2950ead98265956"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pmmp/PocketMine-MP/zipball/57330a718683b4a9db8469403bd7a66b7951493a",
-                "reference": "57330a718683b4a9db8469403bd7a66b7951493a",
+                "url": "https://api.github.com/repos/pmmp/netresearch-jsonmapper/zipball/f700806dec756ed825a8200dc2950ead98265956",
+                "reference": "f700806dec756ed825a8200dc2950ead98265956",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-pcre": "*",
+                "ext-reflection": "*",
+                "ext-spl": "*",
+                "php": ">=7.1"
+            },
+            "replace": {
+                "netresearch/jsonmapper": "~4.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~7.5 || ~8.0 || ~9.0",
+                "squizlabs/php_codesniffer": "~3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JsonMapper": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Weiske",
+                    "email": "cweiske@cweiske.de",
+                    "homepage": "http://github.com/cweiske/jsonmapper/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Fork of netresearch/jsonmapper with security fixes needed by pocketmine/pocketmine-mp",
+            "support": {
+                "email": "cweiske@cweiske.de",
+                "issues": "https://github.com/cweiske/jsonmapper/issues",
+                "source": "https://github.com/pmmp/netresearch-jsonmapper/tree/v4.2.999"
+            },
+            "time": "2023-06-01T13:43:01+00:00"
+        },
+        {
+            "name": "pocketmine/pocketmine-mp",
+            "version": "dev-legacy/pm4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pmmp/PocketMine-MP.git",
+                "reference": "e85605af7feca34e5fa50c97566b08f0c6363a83"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pmmp/PocketMine-MP/zipball/e85605af7feca34e5fa50c97566b08f0c6363a83",
+                "reference": "e85605af7feca34e5fa50c97566b08f0c6363a83",
                 "shasum": ""
             },
             "require": {
@@ -1354,13 +1357,12 @@
                 "ext-zip": "*",
                 "ext-zlib": ">=1.2.11",
                 "fgrosse/phpasn1": "^2.3",
-                "netresearch/jsonmapper": "^4.0",
                 "php": "^8.1",
                 "php-64bit": "*",
-                "pocketmine/bedrock-block-upgrade-schema": "~2.1.0+bedrock-1.19.80",
-                "pocketmine/bedrock-data": "~2.2.0+bedrock-1.19.80",
-                "pocketmine/bedrock-item-upgrade-schema": "~1.2.0+bedrock-1.19.80",
-                "pocketmine/bedrock-protocol": "~21.0.0+bedrock-1.19.80",
+                "pocketmine/bedrock-block-upgrade-schema": "~2.2.0+bedrock-1.20.0",
+                "pocketmine/bedrock-data": "~2.3.0+bedrock-1.20.0",
+                "pocketmine/bedrock-item-upgrade-schema": "~1.3.0+bedrock-1.20.0",
+                "pocketmine/bedrock-protocol": "~22.0.0+bedrock-1.20.0",
                 "pocketmine/binaryutils": "^0.2.1",
                 "pocketmine/callback-validator": "^1.0.2",
                 "pocketmine/classloader": "^0.2.0",
@@ -1371,6 +1373,7 @@
                 "pocketmine/log-pthreads": "^0.4.0",
                 "pocketmine/math": "^0.4.0",
                 "pocketmine/nbt": "^0.3.2",
+                "pocketmine/netresearch-jsonmapper": "~v4.2.999",
                 "pocketmine/raklib": "^0.14.2",
                 "pocketmine/raklib-ipc": "^0.1.0",
                 "pocketmine/snooze": "^0.3.0",
@@ -1384,7 +1387,6 @@
                 "phpstan/phpstan-strict-rules": "^1.2.0",
                 "phpunit/phpunit": "^10.1"
             },
-            "default-branch": true,
             "type": "project",
             "autoload": {
                 "files": [
@@ -1402,7 +1404,7 @@
             "homepage": "https://pmmp.io",
             "support": {
                 "issues": "https://github.com/pmmp/PocketMine-MP/issues",
-                "source": "https://github.com/pmmp/PocketMine-MP/tree/stable"
+                "source": "https://github.com/pmmp/PocketMine-MP/tree/legacy/pm4"
             },
             "funding": [
                 {
@@ -1414,7 +1416,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-05-23T11:27:12+00:00"
+            "time": "2023-06-09T00:44:45+00:00"
         },
         {
             "name": "pocketmine/raklib",
@@ -1846,12 +1848,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "6f6cee9992db6272f1c03ad32400b0aff933001a"
+                "reference": "bef858d57e5ede26bae2e2f2b51b21fd7f6e7590"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/6f6cee9992db6272f1c03ad32400b0aff933001a",
-                "reference": "6f6cee9992db6272f1c03ad32400b0aff933001a",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/bef858d57e5ede26bae2e2f2b51b21fd7f6e7590",
+                "reference": "bef858d57e5ede26bae2e2f2b51b21fd7f6e7590",
                 "shasum": ""
             },
             "require": {
@@ -1931,7 +1933,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-15T22:03:57+00:00"
+            "time": "2023-05-29T22:02:16+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -1939,12 +1941,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "6ffdc65031044e645593bae0fa92b4f69a5452ab"
+                "reference": "84a26bff4c2f3f886c3ce083f9b632fcb314b27c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/6ffdc65031044e645593bae0fa92b4f69a5452ab",
-                "reference": "6ffdc65031044e645593bae0fa92b4f69a5452ab",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/84a26bff4c2f3f886c3ce083f9b632fcb314b27c",
+                "reference": "84a26bff4c2f3f886c3ce083f9b632fcb314b27c",
                 "shasum": ""
             },
             "require": {
@@ -1999,7 +2001,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-25T05:57:58+00:00"
+            "time": "2023-06-28T04:54:58+00:00"
         },
         {
             "name": "symfony/console",
@@ -2007,12 +2009,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "89e308f0a2371a93304dc551bca8195b55bcec42"
+                "reference": "7f16bd3b4ae06c1f9c054ab0139d4cd8dc4a09b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/89e308f0a2371a93304dc551bca8195b55bcec42",
-                "reference": "89e308f0a2371a93304dc551bca8195b55bcec42",
+                "url": "https://api.github.com/repos/symfony/console/zipball/7f16bd3b4ae06c1f9c054ab0139d4cd8dc4a09b0",
+                "reference": "7f16bd3b4ae06c1f9c054ab0139d4cd8dc4a09b0",
                 "shasum": ""
             },
             "require": {
@@ -2089,11 +2091,11 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-26T08:18:17+00:00"
+            "time": "2023-06-23T17:06:40+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "3.4.x-dev",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
@@ -2108,6 +2110,7 @@
             "require": {
                 "php": ">=8.1"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2140,7 +2143,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/3.4"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.3.0"
             },
             "funding": [
                 {
@@ -2240,7 +2243,7 @@
         },
         {
             "name": "symfony/event-dispatcher-contracts",
-            "version": "3.4.x-dev",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher-contracts.git",
@@ -2256,6 +2259,7 @@
                 "php": ">=8.1",
                 "psr/event-dispatcher": "^1"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2296,7 +2300,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/event-dispatcher-contracts/tree/3.4"
+                "source": "https://github.com/symfony/event-dispatcher-contracts/tree/v3.3.0"
             },
             "funding": [
                 {
@@ -2320,12 +2324,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "b2f79d86cd9e7de0fff6d03baa80eaed7a5f38b5"
+                "reference": "0ce3a62c9579a53358d3a7eb6b3dfb79789a6364"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/b2f79d86cd9e7de0fff6d03baa80eaed7a5f38b5",
-                "reference": "b2f79d86cd9e7de0fff6d03baa80eaed7a5f38b5",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/0ce3a62c9579a53358d3a7eb6b3dfb79789a6364",
+                "reference": "0ce3a62c9579a53358d3a7eb6b3dfb79789a6364",
                 "shasum": ""
             },
             "require": {
@@ -2376,7 +2380,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-02T11:38:35+00:00"
+            "time": "2023-05-31T13:04:02+00:00"
         },
         {
             "name": "symfony/finder",
@@ -3070,7 +3074,7 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "3.4.x-dev",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
@@ -3089,6 +3093,7 @@
             "conflict": {
                 "ext-psr": "<1.1|>=2"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -3132,7 +3137,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/3.4"
+                "source": "https://github.com/symfony/service-contracts/tree/v3.3.0"
             },
             "funding": [
                 {
