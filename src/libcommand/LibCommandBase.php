@@ -23,6 +23,7 @@ use pocketmine\event\EventPriority;
 use pocketmine\event\server\DataPacketSendEvent;
 use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\network\mcpe\protocol\types\command\CommandData;
+use pocketmine\network\mcpe\protocol\types\command\CommandOverload;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
@@ -66,13 +67,17 @@ final class LibCommandBase {
 	/**
 	 * Maps a command's overloads to a PocketMine-MP compatible array of CommandParameters.
 	 *
-	 * @return array<array<CommandParameter>>
+	 * @return CommandOverload[]
 	 */
 	private static function mapOverloadsToPacket(Command $command): array {
 		return array_map(
-			callback: fn(Overload $overload) => array_map(
-				callback: fn(Parameter $parameter) => $parameter->encode(),
-				array: $overload->getParameters()
+			callback: fn(Overload $overload) => new CommandOverload(
+				// TODO: command chaining
+				chaining: false,
+				parameters: array_map(
+					callback: fn(Parameter $parameter) => $parameter->encode(),
+					array: $overload->getParameters()
+				)
 			),
 			array: $command->getOverloads()
 		);

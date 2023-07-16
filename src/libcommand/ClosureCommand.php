@@ -44,7 +44,6 @@ final class ClosureCommand extends Command{
 
 	/**
 	 * @param Closure(CommandSender, string, array<string, mixed>): (bool|string) $onExecute
-	 * @param Translatable|string|null $usageMessage
 	 * @param array<string> $aliases
 	 * @param array<Overload> $overloads
 	 */
