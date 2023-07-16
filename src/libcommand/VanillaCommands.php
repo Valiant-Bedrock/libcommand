@@ -34,7 +34,7 @@ use libcommand\parameter\types\SubcommandParameter;
 use libcommand\parameter\types\TargetParameter;
 use libcommand\parameter\types\ValueParameter;
 use libcommand\parameter\types\Vector3Parameter;
-use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
+use pocketmine\network\mcpe\protocol\types\command\CommandOverload;
 use pocketmine\utils\RegistryTrait;
 use function array_map;
 use function str_replace;
@@ -361,7 +361,7 @@ final class VanillaCommands {
 		self::_registryRegister(str_replace("-", "_", $name), new VanillaCommands($name, $overloads));
 	}
 
-	/** @var array<array<CommandParameter>> */
+	/** @var CommandOverload[] */
 	protected array $mappedOverloads;
 
 	/**
@@ -382,13 +382,17 @@ final class VanillaCommands {
 	}
 
 	/**
-	 * @return array<array<CommandParameter>>
+	 * @return CommandOverload[]
 	 */
 	public function getMappedOverloads(): array {
 		return $this->mappedOverloads ??= array_map(
-			callback: fn(Overload $overload) => array_map(
-				callback: fn(Parameter $parameter) => $parameter->encode(),
-				array: $overload->getParameters()
+			callback: fn(Overload $overload) => new CommandOverload(
+				// TODO: command chaining
+				chaining: false,
+				parameters: array_map(
+					callback: fn(Parameter $parameter) => $parameter->encode(),
+					array: $overload->getParameters()
+				)
 			),
 			array: $this->overloads
 		);
