@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace libcommand;
 
+use InvalidArgumentException;
 use libcommand\parameter\Parameter;
 use pocketmine\event\EventPriority;
 use pocketmine\event\server\DataPacketSendEvent;
@@ -31,8 +32,7 @@ use function array_key_first;
 use function array_map;
 
 final class LibCommandBase {
-
-	/** @var array<Command> */
+	/** @var Command[] */
 	private static array $commands;
 
 	private static bool $registered = false;
@@ -41,6 +41,7 @@ final class LibCommandBase {
 		if (self::$registered) {
 			return;
 		}
+		// TODO: schedule a task to listen for new commands?
 		$plugin->getServer()->getPluginManager()->registerEvent(
 			event: DataPacketSendEvent::class,
 			handler: function (DataPacketSendEvent $event): void {
@@ -82,13 +83,41 @@ final class LibCommandBase {
 		);
 	}
 
+	public static function refresh(): void {
+		if (!self::$registered) {
+			throw new InvalidArgumentException("Registration must be called before refreshing commands");
+		}
+		// refresh internal cache
+		self::$commands = self::findCompatibleCommands();
+		self::broadcastCommandSync();
+	}
+
+	private static function broadcastCommandSync(): void {
+		$instance = Server::getInstance();
+		foreach ($instance->getOnlinePlayers() as $player) {
+			if (!$player->isConnected()) {
+				continue;
+			}
+			$player->getNetworkSession()->syncAvailableCommands();
+		}
+	}
+
 	/**
 	 * This is a lazy-loaded method that will return all commands that are a subclass of libcommand\Command.
 	 *
 	 * @return array<Command>
 	 */
 	private static function getCompatibleCommands(): array {
-		return self::$commands ??= array_filter(
+		return self::$commands ??= self::findCompatibleCommands();
+	}
+
+	/**
+	 * This will return all commands that are a subclass of libcommand\Command.
+	 *
+	 * @return array<Command>
+	 */
+	private static function findCompatibleCommands(): array {
+		return array_filter(
 			array: Server::getInstance()->getCommandMap()->getCommands(),
 			callback: fn(\pocketmine\command\Command $command): bool => $command instanceof Command
 		);
