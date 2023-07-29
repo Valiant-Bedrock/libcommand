@@ -41,6 +41,7 @@ final class LibCommandBase {
 		if (self::$registered) {
 			return;
 		}
+		self::$registered = true;
 		// TODO: schedule a task to listen for new commands?
 		$plugin->getServer()->getPluginManager()->registerEvent(
 			event: DataPacketSendEvent::class,
